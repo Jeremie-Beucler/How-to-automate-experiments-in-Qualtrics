@@ -28,7 +28,7 @@ Here is a brief summary of the different steps for automating experiments in Qua
 8. Save the new `.qsf` file and import it on Qualtrics;
 9. If you want to change something in your items configuration : *go back to step 4;*
 
-You may have noticed that this is not a fully automated process. Indeed, steps 3, 4, 5 and 8 require to use Qualtrics, either to manually customize one item, or to import and export the survey at its different stages. However, these operations are very easy to perform and do not take a lot of time alltogether.
+You may have noticed that this is not a fully automated process. Indeed, steps 3, 4, 5 and 8 require to use Qualtrics, either to manually customize one item, or to import and export the survey at its different stages. However, these operations are very easy to perform and do not take a lot of time on the whole.
 
 ## STEP 1 : Prepare a list of your different items
 
