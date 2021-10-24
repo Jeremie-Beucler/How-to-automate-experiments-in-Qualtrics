@@ -19,16 +19,29 @@ However, your experiment may contain different conditions with several trials ..
 Here is a brief summary of the different steps for automating experiments in Qualtrics :
 
 1. Prepare a list of your different items (e.g., in a `.csv` file);
-2. Write a first program that generates the structure of your experiment using this list;
-3. Save the result in a `.txt` file and import it on Qualtrics;
-4. Fully customize one item on Qualtrics by hand;
-5. Export your survey in a `.qsf` file;
-6. Open this `.qsf` file on Python using a `json` decoder;
-7. Copy the configuration of the manually customized item onto the other items;
-8. Save the new `.qsf` file and import it on Qualtrics;
-9. If you want to change something in your items configuration : *go back to step 4;*
+2. TXT STRUCTURE TRIAL
+3. Write a first program that generates the structure of your experiment using this list;
+4. Save the result in a `.txt` file and import it on Qualtrics;
+5. Fully customize one item on Qualtrics by hand;
+6. Export your survey in a `.qsf` file;
+7. Open this `.qsf` file on Python using a `json` decoder;
+8. Copy the configuration of the manually customized item onto the other items;
+9. Save the new `.qsf` file and import it on Qualtrics;
+10. If you want to change something in your items configuration : *go back to step 2;*
 
-You may have noticed that this is not a fully automated process. Indeed, steps 3, 4, 5 and 8 require to use Qualtrics, either to manually customize one item, or to import and export the survey at its different stages. However, these operations are very easy to perform and do not take a lot of time on the whole.
+You may have noticed that this is not a fully automated process. Indeed, steps 2, 4, 5, 6 and 9 require to use Qualtrics, either to manually customize one item, or to import and export the survey at its different stages. However, these operations are very easy to perform and do not take a lot of time on the whole.
+
+images :
+- vue csv R id questions réponses
+- .txt structure mcq
+- vue csv x .txt structure = struct remplie
+- txt flèche sur qualtrics
+- vue qualtrics customize
+- qualtrics => qsf file
+- python / vue arbre qsf
+- carré rouge sélection item => autre item
+- qsf => qualtrics
+
 
 ## STEP 1 : Prepare a list of your different items
 
