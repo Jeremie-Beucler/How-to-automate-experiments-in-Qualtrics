@@ -1,8 +1,11 @@
 # How to automate experiments in Qualtrics
 *Jérémie Beucler* *- October, 2021*
 
+This Github page explains how to partially automate experiments generation on Qualtrics using `Python`. Note that you may do the same thing using `R` or a similar programming language.
 
-This Github page explains how to partially automate experiments generation on Qualtrics using `Python`. Note that you may do the same thing using `R` or a similar programmation language.
+Prerequisites : each step is fairly simple in itself, but you should at least :
+- know how to use Qualtrics (a little!)
+- knowing a little bit of Python or R (basic loops, read/write in a .txt file, bases in regular expression)
 
 *Notes :*
 - *This page would not have been created without Matthieu Raoelison, who came up with this process in the first place;*
@@ -36,7 +39,7 @@ Create a `.csv` file (or any format you find suitable, as long as you can read i
 
 ![](csv_image.png)
 
-*Example of a `.csv` file*
+*Example of a .csv file with organization of the different elements*
 
 **Important : you should also have a column containing the trial/item ID, in a structured way. This will be necessary to find your item in the `.qsf` file (step 4).**
 
@@ -97,7 +100,7 @@ You have to write the final list in a `.txt` file. It should looks like this:
 
 ![](final_txt_file_image.png)
 
-*Example of a completed trial in the final `.txt` file*
+*Example of a complete trial in the final `.txt` file*
 
 After that, you have to import this `.txt` file on Qualtrics. This is how to do it: [How to import a TXT Survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportTXTDoc).
 
@@ -111,7 +114,7 @@ Once your survey has been imported on Qualtrics, choose one of your trials (in Q
 
 *Example of the configuration of a timer in the Qualtrics interface*
 
-For even more advanced customization, you may want to add some [Javascript code](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/add-javascript/) to the question. After you have customized one trial, note its block ID (e.g., "C_01). 
+For even more advanced customization, you may want to add some [JavaScript code](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/add-javascript/) to the question. After you have customized one trial, note its block ID (e.g., "C_01). 
 
 Then, export your survey as a `.qsf` file: [How to export a Survey as a QSF](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ExportingaSurveyasaQSF).
 
@@ -217,9 +220,10 @@ You should find all the different trials in the same, customized format. Congrat
 
 You can now modify the [Survey flow](https://www.qualtrics.com/support/survey-platform/survey-module/survey-flow/survey-flow-overview/), change the general appearance of the survey...
 
-### STEP 5 : If you want to change something in your items configuration, go back to step 2 or 3.
+## STEP 5 : If you want to change something in your items configuration, go back to step 2 or 3.
 
 If you realize that you have some modifications to make to your trial configuration, you can go back to step 2 or 3 (depending on the modification). Note that exporting and importing the survey in the `.qsf` format will not affect the Survey Flow, or other settings you may have fixed manually.
 
+## Final note
 
-
+I hope this page will help you to gain some time if you have to use Qualtrics to build experiments in the future !
