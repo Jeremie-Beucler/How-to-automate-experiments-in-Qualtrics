@@ -215,8 +215,6 @@ Finally, you have to import the new .qsf file: [Importing a QSF Survey](https://
 
 You should find all the different trials in the same, customized format. Congratulations, you've done it!
 
-![](final_result.png)
-
 You can now modify the [Survey flow](https://www.qualtrics.com/support/survey-platform/survey-module/survey-flow/survey-flow-overview/), change the general appearance of the survey...
 
 ### STEP 5 : If you want to change something in your items configuration, go back to step 2 or 3.
