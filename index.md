@@ -21,7 +21,7 @@ Here is a brief summary of the different steps for automating experiments in Qua
 1. Prepare a list of your different items (e.g., in a `.csv` file);
 2. Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics;
 3. Fully customize one item on Qualtrics by hand and export your survey in a `.qsf` file
-4. Open this file on Python, copy the configuration of the manually customized item onto the other items and import the new `.qsf` file on Qualtrics;
+4. Open this file with Python, copy the configuration of the manually customized item onto the other items and import the new `.qsf` file on Qualtrics;
 5. If you want to change something in your items configuration : *go back to step 2;*
 
 You may have noticed that this is not a fully automated process. You indeed have to manually customize one item on Qualtrics, or to import and export the survey at its different stages. However, these operations are very easy to perform and do not take a lot of time on the whole.
@@ -44,9 +44,9 @@ Fortunately, Qualtrics allows you to import a simple survey structure in a `.txt
 
 Before proceeding, read the *Preparing a Simple Format TXT or DOC File* and the *Preparing an Advanced Format TXT or DOC File* sections of the following page, which explain the rules you have to follow in your `.txt` file : [How to import a survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/).
 
-Once you have understood how the `.txt` file works, you can generate a basic trial structure. Then, you  only have to use a `for` loop to fill this structure with your different items.
+Once you have understood how the `.txt` file works, you can generate a basic trial structure. Then, you  only have to use a `for` loop to fill this structure with your different items. I advise you to create one block per trial, as one trial contains several elements in Qualtrics format. Hence, for trial n°1, you will create block n°1 containing fixation cross n°1, question n°1 ...
 
-Here is an example of what this part of your code may look like. This generates simple trials, with a fixation cross, a MCQ and a timer (to record RT).
+Here is an example of what this part of your code may look like. This generates simple trials, with a fixation cross and a MCQ. The "rt" elements correspond to "timers" in Qualtrics, that allow to record RT or to display an element for a givent duration.
 
 Note :
 
@@ -83,7 +83,7 @@ for elt in range(len(questions_formated)) :
     list_of_question.append(question_template)
 ```
 
-**Important : you must add an ID to each element of your trial (e.g., block, fixation cross, question, timer ...). This will be necessary to find each part of your trial in the `.qsf` file (step 4).**
+**Important : you must add an ID to each element of your trial (e.g., block, fixation cross, question, timer ...). This will be necessary to find each part of your trial in the `.qsf` file (step 4). The block ID should be present in each sub-element ID. **
 
 You have to write the final list in a `.txt` file. It should looks like this :
 
@@ -91,6 +91,30 @@ You have to write the final list in a `.txt` file. It should looks like this :
 
 After that, you have to import this `.txt` file on Qualtrics. This is how to do it : [How to import a TXT Survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportTXTDoc).
 
+* Note : During the importation process, Qualtrics automatically adds the date after your block's name (e.g., "No_conflict_1_0" will become "No_conflict_1_0 - Oct 20, 2021").*
 
+## STEP 3 : Fully customize one item on Qualtrics by hand and export your survey in a `.qsf` file
+
+![qualtrics_manual](/images/qualtrics_manual_image.png)
+
+Once your survey has been imported on Qualtrics, choose one of your trials (in Qualtrics, a "block"), and customize it manually. This is where you can set up the trial options using the Qualtrics interface. For even more advanced customization, you may want to add some JavaScript code to the question. After you have customized one trial, note its block ID (e.g., "C_01). 
+
+Then, export your survey as a `.qsf` file : [How to export a Survey as a QSF](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ExportingaSurveyasaQSF).
+
+## STEP 4 : Open this file with Python, copy the configuration of the manually customized item onto the other items and import the new `.qsf` file on Qualtrics;
+
+### Understand the structure of the `.qsf` file
+
+For this last stage, it is crucial that you understand what a `.qsf` file is and how it is organized.
+
+Before proceeding, here are two ressources you should read that will explain it to you :
+- [Quickstart Guide to undertsanding the Qualtrics Survey File](https://gist.github.com/ctesta01/d4255959dace01431fb90618d1e8c241)
+- [How to generate qualtrics questions](https://blog.askesis.pl/post/2019/04/qualtrics-generate.html)
+
+### Open the `.qsf` file
+
+### Copy-paste the customized item configuration onto the other items
+
+### Import the new `.qsf` file on Qualtrics
 
 
