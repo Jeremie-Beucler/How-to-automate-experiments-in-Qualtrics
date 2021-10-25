@@ -58,7 +58,7 @@ Note :
 - *`question_template` is a list of strings containing the structure of a typical trial;*
 - *`list_of_question` is the list where we put all the trials;*
 
-```
+```python
 # we loop through our questions df
 for elt in range(len(questions_formated)) :
     # the template in itself, renewed at each iteration
@@ -119,7 +119,7 @@ Before proceeding, here are two ressources you should read that will explain it 
 
 As you read, the file contains `JSON` code. Fortunately, you can read it using a `JSON` encoder/decoder. I used the [json library](https://docs.python.org/3/library/json.html) to do it. To read the qsf file, I just had to use the `json.load` function:
 
-```
+```python
 # open the qsf file
 with open('my_project.qsf', encoding = 'utf-8') as f:
   data = json.load(f)
@@ -138,7 +138,7 @@ Remember, you know the name of the item you customized manually. You now have to
 
 *Note : as you read, you should only look at Survey Questions (SQ) : hence the `if data['SurveyElements'][index]['Element'] == "SQ":` line.* 
 
-```
+```python
 # looping through the questions
 for index in range(0, len(data['SurveyElements'])):
     # checking if question (SQ = survey questions)
@@ -153,7 +153,7 @@ This code displays the index of the question you formatted manually. You can now
 
 Once you have done that, you just have to do the copy-paste operation. Here is an example for multiple-choice questions (MCQs) settings:
 
- ```
+ ```python
 # MCQ PARAMETERS
 
 # looping through the questions
@@ -191,7 +191,7 @@ You have to repeat this copy-pasting operation for each element of your trial (e
 
 Once you are finished, you only have to write the result in a new `.qsf` file thanks to the `json.dump` function :
 
- ```
+ ```python
  # new version of the qsf file
 with open('my_project_modified.qsf.qsf', 'w') as h:
     json.dump(data, fp=h)
