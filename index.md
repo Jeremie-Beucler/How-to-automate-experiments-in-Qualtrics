@@ -26,7 +26,7 @@ Here is a brief summary of the different steps for automating experiments in Qua
 2. Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics;
 3. Fully customize one item on Qualtrics by hand and export your survey in a `.qsf` file
 4. Open this file with Python, copy the configuration of the manually customized item onto the other items and import the new `.qsf` file on Qualtrics;
-5. If you want to change something in your items configuration : go back to step 2/ 3.
+5. If you want to change something in your items configuration : go back to step 2 or 3.
 
 You may have noticed that this is not a fully automated process. You indeed have to manually customize one item on Qualtrics, or to import and export the survey at its different stages. However, these operations are very easy to perform and do not take a lot of time on the whole.
 
@@ -205,7 +205,7 @@ You should find all the different trials in the same, customized format. Congrat
 
 You can now modify the [Survey flow](https://www.qualtrics.com/support/survey-platform/survey-module/survey-flow/survey-flow-overview/), change the general appearance of the survey...
 
-### STEP 5 : If you want to change something in your items configuration...
+### STEP 5 : If you want to change something in your items configuration, go back to step 2 or 3.
 
 If you realize that you have some modifications to make to your trial configuration, you can go back to step 2 or 3 (depending on the modification). Note that exporting and importing the survey in the `.qsf` format will not affect the Survey Flow, or other settings you may have fixed manually.
 
