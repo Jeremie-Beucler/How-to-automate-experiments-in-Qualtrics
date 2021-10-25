@@ -120,9 +120,9 @@ As you read, the file contains `JSON` code. Fortunately, you can read it using a
 with open('my_project.qsf', encoding = 'utf-8') as f:
   data = json.load(f)
 ```
-At this point, you should be able to manually explore the file. I found the *variable explorer* of Spyder to be very useful to explore the object. As you read, the object contains several elements. In Python, it is an object containing a series of nested dictionaries. You can think of it as a drawer, with drawers in it, which themselves contain other drawers ...
+At this point, you should be able to manually explore the file. I found the *variable explorer* of the [`Spyder` environment](https://www.spyder-ide.org/) to be very useful to explore the object. As you read, the object contains several elements. In Python, it is a dictionary containing a series of nested dictionaries. You can think of it as a drawer, with drawers in it, which themselves contain other drawers.
 
-Here is an example :
+Here is an example of this kind of Russian doll :
 
 ![spyder_manual](/images/spyder_manual_image.png)
 
