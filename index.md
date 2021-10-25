@@ -51,10 +51,50 @@ Create a `.csv` file (or any format you find suitable, as long as you can read i
 
 ## STEP 2 : Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics;
 
-Fortunately, Qualtrics allows you to import a simple survey structure in a `.txt` file, using a specific syntax.
+![csv_x_struct_image](/images/csv_x_struct_image.png)
+
+Fortunately, Qualtrics allows you to import a simple survey structure in a `.txt` file, using a specific syntax. However, the features you can implement through this file are very limited. For instance, you cannot set up a response time in it. This file will only allow you to create the "squeletton" of your survey.
 
 Before proceeding, read the *Preparing a Simple Format TXT or DOC File* and the *Preparing an Advanced Format TXT or DOC File* sections of the following page, which explain the rules you have to follow in your `.txt` file : [How to import a survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/).
 
+Once you have understood how the `.txt` file works, you can generate a basic trial structure. Then, you  only have to use a `for` loop to fill this structure with your different items.
 
+Here is an example of what this part of your code may look like :
+
+* Note :
+- `questions_formated` is the data frame (`.csv` file) with all our items, ID, possible answers;
+- `question_template` is a list of strings containing the structure of a typical trial;
+- `list_of_question` is the list where we put all the trials;
+
+```
+# we loop through our questions df
+for elt in range(len(questions_formated)) :
+    # the template in itself, renewed at each iteration
+    question_template = qualtrics_structure[1:]
+    # the block ID
+    question_template[1] = "[[Block:" + questions_formated.loc[elt, 'ID_long'] + "]]"
+    # the fixation cross ID
+    question_template[4] = "[[ID:" + questions_formated.loc[elt, 'ID'] + "_cross]]"
+    # rt fixation cross ID
+    question_template[7] = "[[ID:" + questions_formated.loc[elt, 'ID'] + "_cross_rt]]"
+    # question ID
+    question_template[12] = "[[ID:" + questions_formated.loc[elt, 'ID'] + "_MCQ]]"
+    # text of question
+    question_template[13] = questions_formated.loc[elt, 'sentence']
+    # first response option
+    question_template[15] = questions_formated.loc[elt, 'Rep_1']
+    # second response option
+    question_template[16] = questions_formated.loc[elt, 'Rep_2']
+    # third and four are always the same
+    question_template[17] = "This question can't be answered in this form"
+    question_template[18] = "Don't know"
+    # rt MCQ ID
+    question_template[20] = "[[ID:" + questions_formated.loc[elt, 'ID'] + "_MCQ_rt]]"
+
+    # we append the completed template to the final list
+    list_of_question.append(question_template)
+```
+
+You only have to write the final list in a `.txt` file and import it in Qualtrics ! This is how to do it : [Importing a TXT Survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportTXTDoc).
 
 
