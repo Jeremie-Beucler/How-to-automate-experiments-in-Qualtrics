@@ -56,7 +56,7 @@ Once you have understood how the `.txt` file works, you can generate a basic tri
 
 Here is an example of what this part of your code may look like. This generates simple trials, with a fixation cross and a MCQ. The "rt" elements correspond to "timers" in Qualtrics, that allow to record RT or to display an element for a givent duration.
 
-Note :
+*Note :*
 
 - *`questions_formated` is the data frame (`.csv` file) with all our items, ID, possible answers;*
 - *`question_template` is a list of strings containing the structure of a typical trial;*
@@ -97,7 +97,7 @@ You have to write the final list in a `.txt` file. It should looks like this:
 
 ![](final_txt_file_image.png)
 
-*Example of a completed trial in your final `.txt` file*
+*Example of a completed trial in the final `.txt` file*
 
 After that, you have to import this `.txt` file on Qualtrics. This is how to do it: [How to import a TXT Survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportTXTDoc).
 
@@ -214,6 +214,8 @@ with open('my_project_modified.qsf.qsf', 'w') as h:
 Finally, you have to import the new .qsf file: [Importing a QSF Survey](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportingASurvey).
 
 You should find all the different trials in the same, customized format. Congratulations, you've done it!
+
+![](final_result.png)
 
 You can now modify the [Survey flow](https://www.qualtrics.com/support/survey-platform/survey-module/survey-flow/survey-flow-overview/), change the general appearance of the survey...
 
