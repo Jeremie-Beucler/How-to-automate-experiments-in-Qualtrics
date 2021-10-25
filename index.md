@@ -19,16 +19,13 @@ However, your experiment may contain different conditions, each one containing s
 Here is a brief summary of the different steps for automating experiments in Qualtrics :
 
 1. Prepare a list of your different items (e.g., in a `.csv` file);
-2. Write a first program that generates the structure of your experiment using this list;
-3. Save the result in a `.txt` file and import it on Qualtrics;
-4. Fully customize one item on Qualtrics by hand;
-5. Export your survey in a `.qsf` file;
-6. Open this `.qsf` file on Python using a `json` decoder;
-7. Copy the configuration of the manually customized item onto the other items;
-8. Save the new `.qsf` file and import it on Qualtrics;
-9. If you want to change something in your items configuration : *go back to step 2;*
+2. Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics;
+3. Fully customize one item on Qualtrics by hand;
+4. Export your survey in a `.qsf` file and open this file on Python using a `json` decoder;
+5. Copy the configuration of the manually customized item onto the other items and import the new `.qsf` file on Qualtrics;
+6. If you want to change something in your items configuration : *go back to step 2;*
 
-You may have noticed that this is not a fully automated process. Indeed, steps 3, 4, 5 and 8 require to use Qualtrics, either to manually customize one item, or to import and export the survey at its different stages. However, these operations are very easy to perform and do not take a lot of time on the whole.
+You may have noticed that this is not a fully automated process. You indeed have to manually customize one item on Qualtrics, or to import and export the survey at its different stages. However, these operations are very easy to perform and do not take a lot of time on the whole.
 
 images :
 - vue csv R id questions réponses
@@ -43,5 +40,21 @@ images :
 
 
 ## STEP 1 : Prepare a list of your different items
+
+![csv_image](/images/csv_image.png)
+
+Create a `.csv` file (or any format you find suitable, as long as you can read it on Python afterwards) containing what is gonna change from trial to trial : questions, possible answers ...
+
+**Important** : you should also have a column containing the trial/item ID, in a structured way. This will be necessary to find your item in the `.qsf` file.
+
+*Example : if you have two conditions - Conflict and No-Conflict - with 20 items in each, you can name your items : C_1, NC_1, C_2 ...*
+
+## STEP 2 : Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics;
+
+Fortunately, Qualtrics allows you to import a simple survey structure in a `.txt` file, using a specific syntax.
+
+Before proceeding, read the *Preparing a Simple Format TXT or DOC File* and the *Preparing an Advanced Format TXT or DOC File* sections of the following page, which explain the rules you have to follow in your `.txt` file : [How to import a survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/).
+
+
 
 
