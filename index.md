@@ -26,18 +26,6 @@ Here is a brief summary of the different steps for automating experiments in Qua
 
 You may have noticed that this is not a fully automated process. You indeed have to manually customize one item on Qualtrics, or to import and export the survey at its different stages. However, these operations are very easy to perform and do not take a lot of time on the whole.
 
-images :
-- vue csv R id questions réponses
-- .txt structure mcq
-- vue csv x .txt structure = struct remplie
-- txt flèche sur qualtrics
-- vue qualtrics customize
-- qualtrics => qsf file
-- python / vue arbre qsf
-- carré rouge sélection item => autre item
-- qsf => qualtrics
-
-
 ## STEP 1 : Prepare a list of your different items
 
 ![csv_image](/images/csv_image.png)
@@ -97,6 +85,12 @@ for elt in range(len(questions_formated)) :
 
 **Important : you must add an ID to each element of your trial (e.g., block, fixation cross, question, timer ...). This will be necessary to find each part of your trial in the `.qsf` file (step 4).**
 
-Finally, you only have to write the final list in a `.txt` file and import it in Qualtrics ! This is how to do it : [How to import a TXT Survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportTXTDoc).
+You have to write the final list in a `.txt` file. It should looks like this :
+
+![final_txt_file_image](/images/final_txt_file_image.png)
+
+After that, you have to import this `.txt` file on Qualtrics. This is how to do it : [How to import a TXT Survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportTXTDoc).
+
+
 
 
