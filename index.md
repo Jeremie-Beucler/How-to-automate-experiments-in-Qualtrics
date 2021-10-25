@@ -2,7 +2,7 @@
 
 This Github page explains how to partially automate experiments generation on Qualtrics using `Python`. Note that you may do the same thing using `R` or a similar programmation language.
 
-This page would not have been created without Matthieu Raoelison, who came up with this process in the first place.
+*This page would not have been created without Matthieu Raoelison, who came up with this process in the first place.*
 
 ## Introduction
 
