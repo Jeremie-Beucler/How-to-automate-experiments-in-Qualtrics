@@ -32,9 +32,11 @@ You may have noticed that this is not a fully automated process. You indeed have
 
 ## STEP 1 : Prepare a list of your different items
 
+Create a `.csv` file (or any format you find suitable, as long as you can read it on Python afterwards) containing what is gonna change from trial to trial : questions, possible answers ...
+
 ![](csv_image.png)
 
-Create a `.csv` file (or any format you find suitable, as long as you can read it on Python afterwards) containing what is gonna change from trial to trial : questions, possible answers ...
+* Example of a `.csv` file*
 
 **Important : you should also have a column containing the trial/item ID, in a structured way. This will be necessary to find your item in the `.qsf` file (step 4).**
 
@@ -42,11 +44,13 @@ Create a `.csv` file (or any format you find suitable, as long as you can read i
 
 ## STEP 2 : Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics;
 
-![](struct_image.png)
-
 Fortunately, Qualtrics allows you to import a simple survey structure in a `.txt` file, using a specific syntax. However, the features you can implement through this file are very limited. For instance, you cannot set up a response time in it. This file will only allow you to create the "squeletton" of your survey.
 
 Before proceeding, read the *Preparing a Simple Format TXT or DOC File* and the *Preparing an Advanced Format TXT or DOC File* sections of the following page, which explain the rules you have to follow in your `.txt` file : [How to import a survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/).
+
+![](struct_image.png)
+
+* Example of a trial structure template*
 
 Once you have understood how the `.txt` file works, you can generate a basic trial structure. Then, you  only have to use a `for` loop to fill this structure with your different items. I advise you to create one block per trial, as one trial contains several elements in Qualtrics format. Hence, for trial n°1, you will create block n°1 containing fixation cross n°1, question n°1 ...
 
@@ -93,15 +97,21 @@ You have to write the final list in a `.txt` file. It should looks like this:
 
 ![](final_txt_file_image.png)
 
+*Example of a completed trial in your final `.txt` file*
+
 After that, you have to import this `.txt` file on Qualtrics. This is how to do it: [How to import a TXT Survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportTXTDoc).
 
 *Note : During the importation process, Qualtrics automatically adds the date after your block's name (e.g., "No_conflict_1_0" will become "No_conflict_1_0 - Oct 20, 2021").*
 
 ## STEP 3 : Fully customize one item on Qualtrics by hand and export your survey in a `.qsf` file
 
+Once your survey has been imported on Qualtrics, choose one of your trials (in Qualtrics, a "block"), and customize it manually. This is where you can set up the trial options using the Qualtrics interface. 
+
 ![](qualtrics_manual_image.png)
 
-Once your survey has been imported on Qualtrics, choose one of your trials (in Qualtrics, a "block"), and customize it manually. This is where you can set up the trial options using the Qualtrics interface. For even more advanced customization, you may want to add some JavaScript code to the question. After you have customized one trial, note its block ID (e.g., "C_01). 
+*Example of the configuration of a timer in the Qualtrics interface*
+
+For even more advanced customization, you may want to add some [Javascript code](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/add-javascript/) to the question. After you have customized one trial, note its block ID (e.g., "C_01). 
 
 Then, export your survey as a `.qsf` file: [How to export a Survey as a QSF](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ExportingaSurveyasaQSF).
 
@@ -129,6 +139,8 @@ At this point, you should be able to manually explore the file. I found the *var
 Here is an example of this Russian doll type of structure:
 
 ![](spyder_manual_image.png)
+
+*Example of `.qsf` file manual exploration in the variable explorer of Spyder*
 
 If you look at each window's title bar, you can see that I first opened the object `Data`, then `SurveyElements`, then the item n° `223`, then its `Payload`, and finally its `Randomization` settings.
 
