@@ -32,7 +32,7 @@ You may have noticed that this is not a fully automated process. You indeed have
 
 ## STEP 1 : Prepare a list of your different items
 
-![](/images/csv_image.png)
+![](images/csv_image.png)
 
 Create a `.csv` file (or any format you find suitable, as long as you can read it on Python afterwards) containing what is gonna change from trial to trial : questions, possible answers ...
 
