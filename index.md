@@ -108,12 +108,30 @@ Then, export your survey as a `.qsf` file : [How to export a Survey as a QSF](ht
 For this last stage, it is crucial that you understand what a `.qsf` file is and how it is organized.
 
 Before proceeding, here are two ressources you should read that will explain it to you :
-- [Quickstart Guide to undertsanding the Qualtrics Survey File](https://gist.github.com/ctesta01/d4255959dace01431fb90618d1e8c241)
+- [Quickstart Guide to understand the Qualtrics Survey File](https://gist.github.com/ctesta01/d4255959dace01431fb90618d1e8c241)
 - [How to generate qualtrics questions](https://blog.askesis.pl/post/2019/04/qualtrics-generate.html)
 
 ### Open the `.qsf` file
 
+As you read, the file contains `JSON` code. Fortunately, you can read it using a `JSON` encoder/decoder. I used the [json library](https://docs.python.org/3/library/json.html) to do it. To read the qsf file, I just had to enter the following lines of code :
+
+```
+# open the qsf file
+with open('my_project.qsf', encoding = 'utf-8') as f:
+  data = json.load(f)
+```
+At this point, you should be able to manually explore the file. I found the *variable explorer* of Spyder to be very useful to explore the object. As you read, the object contains several elements. In Python, it is an object containing a series of nested dictionaries. You can think of it as a drawer, with drawers in it, which themselves contain other drawers ...
+
+Here is an example :
+
+![spyder_manual](/images/spyder_manual_image.png)
+
+If you look at each window's title bar, you can see that I first opened the object `Data`, then `SurveyElements`, then the item n° `223`, then its `Payload`, and finally its `Randomization` settings.
+
 ### Copy-paste the customized item configuration onto the other items
+
+
+
 
 ### Import the new `.qsf` file on Qualtrics
 
