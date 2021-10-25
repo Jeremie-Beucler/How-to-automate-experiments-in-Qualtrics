@@ -20,10 +20,9 @@ Here is a brief summary of the different steps for automating experiments in Qua
 
 1. Prepare a list of your different items (e.g., in a `.csv` file);
 2. Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics;
-3. Fully customize one item on Qualtrics by hand;
-4. Export your survey in a `.qsf` file and open this file on Python using a `json` decoder;
-5. Copy the configuration of the manually customized item onto the other items and import the new `.qsf` file on Qualtrics;
-6. If you want to change something in your items configuration : *go back to step 2;*
+3. Fully customize one item on Qualtrics by hand and export your survey in a `.qsf` file
+4. Open this file on Python, copy the configuration of the manually customized item onto the other items and import the new `.qsf` file on Qualtrics;
+5. If you want to change something in your items configuration : *go back to step 2;*
 
 You may have noticed that this is not a fully automated process. You indeed have to manually customize one item on Qualtrics, or to import and export the survey at its different stages. However, these operations are very easy to perform and do not take a lot of time on the whole.
 
@@ -45,7 +44,7 @@ images :
 
 Create a `.csv` file (or any format you find suitable, as long as you can read it on Python afterwards) containing what is gonna change from trial to trial : questions, possible answers ...
 
-**Important : you should also have a column containing the trial/item ID, in a structured way. This will be necessary to find your item in the `.qsf` file (step 5).**
+**Important : you should also have a column containing the trial/item ID, in a structured way. This will be necessary to find your item in the `.qsf` file (step 4).**
 
 *Example : if you have two conditions - Conflict and No-Conflict - with 20 items in each, you can name your items : C_1, NC_1, C_2 ...*
 
@@ -96,7 +95,7 @@ for elt in range(len(questions_formated)) :
     list_of_question.append(question_template)
 ```
 
-**Important : you must add an ID to each element of your trial (e.g., block, fixation cross, question, timer ...). This will be necessary to find each part of your trial in the `.qsf` file (step 5).**
+**Important : you must add an ID to each element of your trial (e.g., block, fixation cross, question, timer ...). This will be necessary to find each part of your trial in the `.qsf` file (step 4).**
 
 Finally, you only have to write the final list in a `.txt` file and import it in Qualtrics ! This is how to do it : [How to import a TXT Survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportTXTDoc).
 
