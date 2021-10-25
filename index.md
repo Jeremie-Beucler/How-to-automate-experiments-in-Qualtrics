@@ -36,7 +36,7 @@ Create a `.csv` file (or any format you find suitable, as long as you can read i
 
 ![](csv_image.png)
 
-* Example of a `.csv` file*
+*Example of a `.csv` file*
 
 **Important : you should also have a column containing the trial/item ID, in a structured way. This will be necessary to find your item in the `.qsf` file (step 4).**
 
@@ -50,7 +50,7 @@ Before proceeding, read the *Preparing a Simple Format TXT or DOC File* and the 
 
 ![](struct_image.png)
 
-* Example of a trial structure template*
+*Example of a trial structure template*
 
 Once you have understood how the `.txt` file works, you can generate a basic trial structure. Then, you  only have to use a `for` loop to fill this structure with your different items. I advise you to create one block per trial, as one trial contains several elements in Qualtrics format. Hence, for trial n°1, you will create block n°1 containing fixation cross n°1, question n°1 ...
 
