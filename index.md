@@ -1,8 +1,12 @@
 # How to automate experiments in Qualtrics
+*October, 2021*
+*Jérémie Beucler*
 
 This Github page explains how to partially automate experiments generation on Qualtrics using `Python`. Note that you may do the same thing using `R` or a similar programmation language.
 
-*This page would not have been created without Matthieu Raoelison, who came up with this process in the first place.*
+*Notes :
+*-This page would not have been created without Matthieu Raoelison, who came up with this process in the first place.*
+*- This page was created in October, 2021. Because of Qualtrics updates, some informations about the `.qsf` file may become outdated. However, it should not be a major issue once you have understood the logic behind this process*
 
 ## Introduction
 
@@ -16,13 +20,13 @@ However, your experiment may contain different conditions, each one containing s
 
 ## General overview
 
-Here is a brief summary of the different steps for automating experiments in Qualtrics :
+Here is a brief summary of the different steps for automating experiments in Qualtrics:
 
 1. Prepare a list of your different items (e.g., in a `.csv` file);
 2. Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics;
 3. Fully customize one item on Qualtrics by hand and export your survey in a `.qsf` file
 4. Open this file with Python, copy the configuration of the manually customized item onto the other items and import the new `.qsf` file on Qualtrics;
-5. If you want to change something in your items configuration : *go back to step 2;*
+5. If you want to change something in your items configuration : *go back to step 2, or 3;*
 
 You may have noticed that this is not a fully automated process. You indeed have to manually customize one item on Qualtrics, or to import and export the survey at its different stages. However, these operations are very easy to perform and do not take a lot of time on the whole.
 
@@ -85,11 +89,11 @@ for elt in range(len(questions_formated)) :
 
 **Important : you must add an ID to each element of your trial (e.g., block, fixation cross, question, timer ...). This will be necessary to find each part of your trial in the `.qsf` file (step 4). The block ID should be present in each sub-element ID. **
 
-You have to write the final list in a `.txt` file. It should looks like this :
+You have to write the final list in a `.txt` file. It should looks like this:
 
 ![final_txt_file_image](/images/final_txt_file_image.png)
 
-After that, you have to import this `.txt` file on Qualtrics. This is how to do it : [How to import a TXT Survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportTXTDoc).
+After that, you have to import this `.txt` file on Qualtrics. This is how to do it: [How to import a TXT Survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportTXTDoc).
 
 * Note : During the importation process, Qualtrics automatically adds the date after your block's name (e.g., "No_conflict_1_0" will become "No_conflict_1_0 - Oct 20, 2021").*
 
@@ -99,7 +103,7 @@ After that, you have to import this `.txt` file on Qualtrics. This is how to do 
 
 Once your survey has been imported on Qualtrics, choose one of your trials (in Qualtrics, a "block"), and customize it manually. This is where you can set up the trial options using the Qualtrics interface. For even more advanced customization, you may want to add some JavaScript code to the question. After you have customized one trial, note its block ID (e.g., "C_01). 
 
-Then, export your survey as a `.qsf` file : [How to export a Survey as a QSF](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ExportingaSurveyasaQSF).
+Then, export your survey as a `.qsf` file: [How to export a Survey as a QSF](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ExportingaSurveyasaQSF).
 
 ## STEP 4 : Open this file with Python, copy the configuration of the manually customized item onto the other items and import the new `.qsf` file on Qualtrics;
 
@@ -107,13 +111,13 @@ Then, export your survey as a `.qsf` file : [How to export a Survey as a QSF](ht
 
 For this last stage, it is crucial that you understand what a `.qsf` file is and how it is organized.
 
-Before proceeding, here are two ressources you should read that will explain it to you :
+Before proceeding, here are two ressources you should read that will explain it to you:
 - [Quickstart Guide to understand the Qualtrics Survey File](https://gist.github.com/ctesta01/d4255959dace01431fb90618d1e8c241)
 - [How to generate qualtrics questions](https://blog.askesis.pl/post/2019/04/qualtrics-generate.html)
 
 ### Open the `.qsf` file
 
-As you read, the file contains `JSON` code. Fortunately, you can read it using a `JSON` encoder/decoder. I used the [json library](https://docs.python.org/3/library/json.html) to do it. To read the qsf file, I just had to enter the following lines of code :
+As you read, the file contains `JSON` code. Fortunately, you can read it using a `JSON` encoder/decoder. I used the [json library](https://docs.python.org/3/library/json.html) to do it. To read the qsf file, I just had to use the `json.load` function:
 
 ```
 # open the qsf file
@@ -122,7 +126,7 @@ with open('my_project.qsf', encoding = 'utf-8') as f:
 ```
 At this point, you should be able to manually explore the file. I found the *variable explorer* of the [`Spyder` environment](https://www.spyder-ide.org/) to be very useful to explore the object. As you read, the object contains several elements. In Python, it is a dictionary containing a series of nested dictionaries. You can think of it as a drawer, with drawers in it, which themselves contain other drawers.
 
-Here is an example of this kind of Russian doll :
+Here is an example of this Russian doll type of structure:
 
 ![spyder_manual](/images/spyder_manual_image.png)
 
@@ -130,9 +134,80 @@ If you look at each window's title bar, you can see that I first opened the obje
 
 ### Copy-paste the customized item configuration onto the other items
 
+Remember, you know the name of the item you customized manually. You now have to loop through your survey's elements to find it.
 
+* Note : as you read, you should only look at Survey Questions (SQ) : hence the `if data['SurveyElements'][index]['Element'] == "SQ":` line.* 
 
+```
+# looping through the questions
+for index in range(0, len(data['SurveyElements'])):
+    # checking if question (SQ = survey questions)
+    if data['SurveyElements'][index]['Element'] == "SQ":
+        # checking if this is the question already formatted manually (NC_1_0 ...)
+        if data['SurveyElements'][index]['Payload']['DataExportTag'] == 'NC_1_0_MCQ' :
+            # printing index to look at it manually !
+            print(index)
+ ```
+
+This code displays the index of the question you formatted manually. You can now find it by hand in the explorer, to see which elements of the `Payload` (which is the part of the question containing its configuration) you may want to copy-paste onto the other questions. This should not be too difficult, as you know what you customized manually on Qualtrics and as the `Payload` elements are named transparently (e.g., `QuestionJS` for the JavaScript elements of the question).
+
+Once you have done that, you just have to do the copy-paste operation. Here is an example for multiple-choice questions (MCQs) settings:
+
+ ```
+# MCQ PARAMETERS
+
+# looping through the questions
+for index in range(0, len(data['SurveyElements'])):
+    # checking if question (SQ = survey questions)
+    if data['SurveyElements'][index]['Element'] == "SQ":
+        # checking if this is the question already formatted manually (NC_1_0 ...)
+        if data['SurveyElements'][index]['Payload']['DataExportTag'] == 'NC_1_0_MCQ' :
+            # saving the configuration to paste it in other items !
+            # choice randomization
+            ref_MCQ_rando = data['SurveyElements'][index]['Payload']['Randomization']
+            # validation (e.g., forced answer)
+            ref_MCQ_vali = data['SurveyElements'][index]['Payload']['Validation']
+            # JS for not displaying next button, going to next question when clicking
+            ref_MCQ_JS = data['SurveyElements'][index]['Payload']['QuestionJS']
+            
+# now, applying those parameters to other MCQ questions !
+
+# looping through the questions
+for index in range(0, len(data['SurveyElements'])):
+    # checking if question (SQ = survey questions)
+    if data['SurveyElements'][index]['Element'] == "SQ":
+        # checking if this is a MCQ question
+        if re.search("MCQ$", data['SurveyElements'][index]['Payload']['DataExportTag']):
+            # copy pasting the formatted configuration in the other items
+            data['SurveyElements'][index]['Payload']['Randomization'] = ref_MCQ_rando
+            data['SurveyElements'][index]['Payload']['Validation'] = ref_MCQ_vali
+            data['SurveyElements'][index]['Payload']['QuestionJS'] = ref_MCQ_JS
+
+ ```
+ 
+You can see that we use [regular expressions](https://docs.python.org/3/library/re.html) to navigate through the question IDs : `if re.search("MCQ$", data['SurveyElements'][index]['Payload']['DataExportTag']):`. This allows us to only modify MCQ question in this example. 
+ 
+You have to repeat this copy-pasting operation for each element of your trial (e.g., the fixation cross parameters, the MCQ timer parameters, etc.).
+
+Once you are finished, you only have to write the result in a new `.qsf` file thanks to the `json.dump` function :
+
+ ```
+ # new version of the qsf file
+with open('my_project_modified.qsf.qsf', 'w') as h:
+    json.dump(data, fp=h)
+ ```
 
 ### Import the new `.qsf` file on Qualtrics
+
+Finally, you have to import the new .qsf file: [Importing a QSF Survey](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportingASurvey).
+
+You should find all the different trials in the same, customized format. Congratulations, you've done it!
+
+You can now modify the [Survey flow](https://www.qualtrics.com/support/survey-platform/survey-module/survey-flow/survey-flow-overview/), change the general appearance of the survey...
+
+### STEP 5 : If you want to change something in your items configuration...
+
+If you realize that you have some modifications to make to your trial configuration, you can go back to step 2 or 3 (depending on the modification). Note that exporting and importing the survey in the `.qsf` format will not affect the Survey Flow, or other settings you may have fixed manually.
+
 
 
