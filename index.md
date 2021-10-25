@@ -59,7 +59,9 @@ Before proceeding, read the *Preparing a Simple Format TXT or DOC File* and the 
 
 Once you have understood how the `.txt` file works, you can generate a basic trial structure. Then, you  only have to use a `for` loop to fill this structure with your different items.
 
-Here is an example of what this part of your code may look like, where :
+Here is an example of what this part of your code may look like. This generates simple trials, with a fixation cross, a MCQ and a timer (to record RT).
+
+Note :
 
 - *`questions_formated` is the data frame (`.csv` file) with all our items, ID, possible answers;*
 - *`question_template` is a list of strings containing the structure of a typical trial;*
@@ -94,8 +96,8 @@ for elt in range(len(questions_formated)) :
     list_of_question.append(question_template)
 ```
 
-**Important : I added an ID to each element I defined (e.g., block, fixation cross, question, timer ...). This will be necessary to find each part of your trial in the `.qsf` file (step 5).**
+**Important : you must add an ID to each element of your trial (e.g., block, fixation cross, question, timer ...). This will be necessary to find each part of your trial in the `.qsf` file (step 5).**
 
-Finally, you only have to write the final list in a `.txt` file and import it in Qualtrics ! This is how to do it : [Importing a TXT Survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportTXTDoc).
+Finally, you only have to write the final list in a `.txt` file and import it in Qualtrics ! This is how to do it : [How to import a TXT Survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportTXTDoc).
 
 
