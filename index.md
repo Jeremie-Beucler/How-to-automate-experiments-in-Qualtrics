@@ -26,7 +26,7 @@ Here is a brief summary of the different steps for automating experiments in Qua
 2. Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics;
 3. Fully customize one item on Qualtrics by hand and export your survey in a `.qsf` file
 4. Open this file with Python, copy the configuration of the manually customized item onto the other items and import the new `.qsf` file on Qualtrics;
-5. If you want to change something in your items configuration : *go back to step 2, or 3;*
+5. If you want to change something in your items configuration : go back to step 2/ 3.
 
 You may have noticed that this is not a fully automated process. You indeed have to manually customize one item on Qualtrics, or to import and export the survey at its different stages. However, these operations are very easy to perform and do not take a lot of time on the whole.
 
@@ -87,7 +87,7 @@ for elt in range(len(questions_formated)) :
     list_of_question.append(question_template)
 ```
 
-**Important : you must add an ID to each element of your trial (e.g., block, fixation cross, question, timer ...). This will be necessary to find each part of your trial in the `.qsf` file (step 4). The block ID should be present in each sub-element ID. **
+**Important : you must add an ID to each element of your trial (e.g., block, fixation cross, question, timer ...). This will be necessary to find each part of your trial in the `.qsf` file (step 4). The block ID should be present in each sub-element ID.**
 
 You have to write the final list in a `.txt` file. It should looks like this:
 
@@ -95,7 +95,7 @@ You have to write the final list in a `.txt` file. It should looks like this:
 
 After that, you have to import this `.txt` file on Qualtrics. This is how to do it: [How to import a TXT Survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportTXTDoc).
 
-* Note : During the importation process, Qualtrics automatically adds the date after your block's name (e.g., "No_conflict_1_0" will become "No_conflict_1_0 - Oct 20, 2021").*
+*Note : During the importation process, Qualtrics automatically adds the date after your block's name (e.g., "No_conflict_1_0" will become "No_conflict_1_0 - Oct 20, 2021").*
 
 ## STEP 3 : Fully customize one item on Qualtrics by hand and export your survey in a `.qsf` file
 
@@ -136,7 +136,7 @@ If you look at each window's title bar, you can see that I first opened the obje
 
 Remember, you know the name of the item you customized manually. You now have to loop through your survey's elements to find it.
 
-* Note : as you read, you should only look at Survey Questions (SQ) : hence the `if data['SurveyElements'][index]['Element'] == "SQ":` line.* 
+*Note : as you read, you should only look at Survey Questions (SQ) : hence the `if data['SurveyElements'][index]['Element'] == "SQ":` line.* 
 
 ```
 # looping through the questions
