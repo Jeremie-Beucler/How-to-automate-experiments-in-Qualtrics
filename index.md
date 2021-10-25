@@ -45,7 +45,7 @@ images :
 
 Create a `.csv` file (or any format you find suitable, as long as you can read it on Python afterwards) containing what is gonna change from trial to trial : questions, possible answers ...
 
-**Important** : you should also have a column containing the trial/item ID, in a structured way. This will be necessary to find your item in the `.qsf` file.
+**Important : you should also have a column containing the trial/item ID, in a structured way. This will be necessary to find your item in the `.qsf` file (step 5).**
 
 *Example : if you have two conditions - Conflict and No-Conflict - with 20 items in each, you can name your items : C_1, NC_1, C_2 ...*
 
@@ -59,19 +59,18 @@ Before proceeding, read the *Preparing a Simple Format TXT or DOC File* and the 
 
 Once you have understood how the `.txt` file works, you can generate a basic trial structure. Then, you  only have to use a `for` loop to fill this structure with your different items.
 
-Here is an example of what this part of your code may look like :
+Here is an example of what this part of your code may look like, where :
 
-* Note :
-- `questions_formated` is the data frame (`.csv` file) with all our items, ID, possible answers;
-- `question_template` is a list of strings containing the structure of a typical trial;
-- `list_of_question` is the list where we put all the trials;
+- *`questions_formated` is the data frame (`.csv` file) with all our items, ID, possible answers;*
+- *`question_template` is a list of strings containing the structure of a typical trial;*
+- *`list_of_question` is the list where we put all the trials;*
 
 ```
 # we loop through our questions df
 for elt in range(len(questions_formated)) :
     # the template in itself, renewed at each iteration
     question_template = qualtrics_structure[1:]
-    # the block ID
+    # the block ID; one block = a complete trial
     question_template[1] = "[[Block:" + questions_formated.loc[elt, 'ID_long'] + "]]"
     # the fixation cross ID
     question_template[4] = "[[ID:" + questions_formated.loc[elt, 'ID'] + "_cross]]"
@@ -95,6 +94,8 @@ for elt in range(len(questions_formated)) :
     list_of_question.append(question_template)
 ```
 
-You only have to write the final list in a `.txt` file and import it in Qualtrics ! This is how to do it : [Importing a TXT Survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportTXTDoc).
+**Important : I added an ID to each element I defined (e.g., block, fixation cross, question, timer ...). This will be necessary to find each part of your trial in the `.qsf` file (step 5).**
+
+Finally, you only have to write the final list in a `.txt` file and import it in Qualtrics ! This is how to do it : [Importing a TXT Survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportTXTDoc).
 
 
