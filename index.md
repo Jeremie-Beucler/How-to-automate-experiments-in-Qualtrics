@@ -32,7 +32,7 @@ You may have noticed that this is not a fully automated process. You indeed have
 
 ## STEP 1 : Prepare a list of your different items
 
-![](/docs/assets/images/csv_image.png)
+![](csv_image.png)
 
 Create a `.csv` file (or any format you find suitable, as long as you can read it on Python afterwards) containing what is gonna change from trial to trial : questions, possible answers ...
 
@@ -42,7 +42,7 @@ Create a `.csv` file (or any format you find suitable, as long as you can read i
 
 ## STEP 2 : Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics;
 
-![](/docs/assets/images/struct_image.png)
+![](struct_image.png)
 
 Fortunately, Qualtrics allows you to import a simple survey structure in a `.txt` file, using a specific syntax. However, the features you can implement through this file are very limited. For instance, you cannot set up a response time in it. This file will only allow you to create the "squeletton" of your survey.
 
@@ -91,7 +91,7 @@ for elt in range(len(questions_formated)) :
 
 You have to write the final list in a `.txt` file. It should looks like this:
 
-![](/docs/assets/images/final_txt_file_image.png)
+![](final_txt_file_image.png)
 
 After that, you have to import this `.txt` file on Qualtrics. This is how to do it: [How to import a TXT Survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportTXTDoc).
 
@@ -99,7 +99,7 @@ After that, you have to import this `.txt` file on Qualtrics. This is how to do 
 
 ## STEP 3 : Fully customize one item on Qualtrics by hand and export your survey in a `.qsf` file
 
-![](/docs/assets/images/qualtrics_manual_image.png)
+![](qualtrics_manual_image.png)
 
 Once your survey has been imported on Qualtrics, choose one of your trials (in Qualtrics, a "block"), and customize it manually. This is where you can set up the trial options using the Qualtrics interface. For even more advanced customization, you may want to add some JavaScript code to the question. After you have customized one trial, note its block ID (e.g., "C_01). 
 
@@ -128,7 +128,7 @@ At this point, you should be able to manually explore the file. I found the *var
 
 Here is an example of this Russian doll type of structure:
 
-![](/docs/assets/images/spyder_manual_image.png)
+![](spyder_manual_image.png)
 
 If you look at each window's title bar, you can see that I first opened the object `Data`, then `SurveyElements`, then the item n° `223`, then its `Payload`, and finally its `Randomization` settings.
 
