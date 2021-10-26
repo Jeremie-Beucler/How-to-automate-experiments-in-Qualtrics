@@ -35,7 +35,7 @@ It should look like this :
 
 ![](/images/csv_image.png)
 
-*Example of a .csv file with organization of the different elements*
+*A `.csv` file organization*
 
 **Important : you should have a column containing the trial/item ID, in a structured way. This will be necessary to find your item in the `.qsf` file (step 4).**
 
@@ -49,7 +49,7 @@ Before proceeding, read the *Preparing a Simple Format TXT or DOC File* and the 
 
 ![](/images/struct_image.png)
 
-*Example of a trial structure template*
+*A trial structure template*
 
 Once you have understood how the `.txt` file works, you can generate a basic trial structure. I advise you to create one block per trial, as one trial contains several elements in Qualtrics format. Then, you  only have to use a `for` loop to "fill" this structure with your different items.  Hence, for trial n°1, you will end up with block n°1 containing fixation cross n°1, question n°1 ...
 
@@ -113,7 +113,7 @@ For instance, you may want to display the fixation cross for only one second. Th
 
 ![](/images/qualtrics_manual_image.png)
 
-*Example of the configuration of a timer in the Qualtrics interface*
+*Configuration of a timer in the Qualtrics interface*
 
 For even more advanced customization, you may want to add some [JavaScript code](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/add-javascript/) to the question. 
 
@@ -148,7 +148,7 @@ Here is an example of this type of structure:
 
 ![](images/spyder_manual_image.png)
 
-*Example of `.qsf` file manual exploration in the variable explorer of `Spyder`*
+*Example of the `.qsf` file manual exploration in the variable explorer of `Spyder`*
 
 If you look at each window's title bar, you can see that I first opened `Data` (dict), then `SurveyElements` (list), then the item n° `223` (dict), then its `Payload` (dict), and finally its `Randomization` settings (dict).
 
@@ -163,7 +163,7 @@ Here is what it looks like:
 
 ![](images/json_viewer_image.png)
 
-*Example of `.qsf` file manual exploration in `pyjsonviewer`*
+*Example of the `.qsf` file manual exploration in `pyjsonviewer`*
 
 Here you can see that I opened the item n°223 in the SurveyElements, then its Payload and then its QuestionDescription.
 
@@ -240,7 +240,7 @@ with open('my_project_modified.qsf.qsf', 'w') as h:
 
 Finally, you have to import the new .qsf file on Qualtrics: [How to import a QSF Survey](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportingASurvey).
 
-You should find all the different trials in the same, customized format. Congratulations, you've done it!
+You should find all the different trials in the same, customized format. Congratulations, you have done it!
 
 ## Step 5: If you want to change something in your items configuration, go back to step 2 or 3
 
