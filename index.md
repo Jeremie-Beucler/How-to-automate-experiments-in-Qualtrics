@@ -105,7 +105,7 @@ You then have to import this `.txt` file on Qualtrics. This is how to do it: [Ho
 
 *Note: During the importation process, Qualtrics automatically adds the date after your block's name (e.g., "No_conflict_1_0" will become "No_conflict_1_0 - Oct 20, 2021").*
 
-## Step 3: Fully customize one item on Qualtrics by hand and export your survey in a `.qsf` file
+## Step 3: Fully customize one trial on Qualtrics by hand and export your survey in a `.qsf` file
 
 Once your survey has been imported on Qualtrics, choose one of your trials (in Qualtrics, a "block"), and customize it manually. This is where you can set up the trial options using the Qualtrics interface.
 
