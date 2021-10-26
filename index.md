@@ -191,7 +191,8 @@ This code displays the index of the multiple choice question (MCQ) element you f
 Once you have done that, you simply have to do a copy-paste operation. Here is an example for multiple-choice questions (MCQs) settings:
 
  ```python
-# this code copies the configuration of the question 'NC_1_0_MCQ' and applies to all the other MCQ questions of the survey
+# this code copies the configuration of the question 'NC_1_0_MCQ' and
+# applies to all the other MCQ questions of the survey
 
 # looping through the questions
 for index in range(0, len(data['SurveyElements'])):
