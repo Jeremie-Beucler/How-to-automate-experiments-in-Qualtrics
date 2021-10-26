@@ -165,13 +165,13 @@ Here is what it looks like:
 
 *Example of the `.qsf` file manual exploration in `pyjsonviewer`*
 
-Here you can see that I opened the item n°223 in the SurveyElements, then its Payload and then its QuestionDescription.
+Here you can see that I opened the item n°`223` in the `SurveyElements`, then its `Payload` and then its `QuestionDescription`.
 
 ### Copy-paste the customized item configuration onto the other items
 
 Remember, you know the name of the item you customized manually. You now have to loop through your survey's elements to find it, by looking at their **`DataExportTag`, which is inside the `Payload` element and corresponds to the question ID.**
 
-This is a way to do it, using a `for` loop:
+Here is a way to do it, using a `for` loop:
 
 *Note: as you read, you should only look at Survey Questions (SQ) : hence the `if data['SurveyElements'][index]['Element'] == "SQ":` line.* 
 
