@@ -3,13 +3,9 @@
 
 This Github page explains how to partially automate experiments generation on Qualtrics using `Python`. Note that you may do the same thing using `R` or a similar programming language.
 
-Prerequisites : each step is fairly simple in itself, but you should at least :
-- know how to use Qualtrics (a little!)
-- knowing a little bit of Python or R (basic loops, read/write in a .txt file, bases in regular expression)
+Programming perequisites : loops, read & write in a `.txt` or `.csv` file, regular expressions.
 
-*Notes :*
-- *This page would not have been created without Matthieu Raoelison, who came up with this process in the first place;*
-- *This page was created in October, 2021. Because of Qualtrics updates, some informations about the `.qsf` file may become outdated. However, it should not be a major issue once you have understood the logic behind this process.*
+*This page would not have been created without Matthieu Raoelison, who came up with this process in the first place.*
 
 ## Introduction
 
