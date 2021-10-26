@@ -9,13 +9,11 @@ Programming perequisites : loops, read & write in a `.txt` or `.csv` file, regul
 
 ## Introduction
 
-Qualtrics is an online software that allows to generate online surveys. However, some people use it to design scientific psychology experiments, for several reasons. For instance, it is [very easy](https://researcher-help.prolific.co/hc/en-gb/articles/360009224113-Qualtrics-Integration-Guide#heading-1) to run an online experiment using Qualtrics and the participants recruitment platform [Prolific](https://www.prolific.com/).
+Qualtrics is an online software that allows to generate online surveys. However, people sometimes use it to design scientific psychology experiments, for several reasons. First, many universities already have a Qualtrics subscription. It is also [very convenient](https://researcher-help.prolific.co/hc/en-gb/articles/360009224113-Qualtrics-Integration-Guide#heading-1) to run an online experiment using Qualtrics and the participants recruitment platform [Prolific](https://www.prolific.com/). Also, thanks to the graphical interface, you do not need any programming skills to build your experiment in Qualtrics.
 
-This (mis)use of Qualtrics can be quite problematic. Although you can insert some [Javascript code](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/add-javascript/) in your questions and add some logic to your experiment using the [Survey flow](https://www.qualtrics.com/support/survey-platform/survey-module/survey-flow/survey-flow-overview/), Qualtrics still remains a "point and click" software.
+However, using Qualtrics to build experiment can be quite problematic. Although you can insert some [Javascript code](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/add-javascript/) in your questions and add some logic or randomization to your experiment using the [Survey flow](https://www.qualtrics.com/support/survey-platform/survey-module/survey-flow/survey-flow-overview/), Qualtrics ultimately remains a "point and click" software.
 
-Suppose you want to generate a psychology experiment in Qualtrics. In one trial, you may want to display a fixation cross for a given time, show a stimulus  and then record participants answers to this stimulus. In Qualtrics, generating this trial once is quite easy.
-
-However, your experiment may contain different conditions, each one containing several trials ... If you try to implement this on Qualtrics by hand, it will take a lot of time and may lead to errors. Even worse, suppose you painfully managed to build your experiment, and you realize you wanted the fixation cross to be displayed not for two seconds, but only for one. You now have to modify each trial individually. Uh oh ...  This is the kind of task where you may want to use programming !
+Suppose you want to generate a psychology experiment in Qualtrics. In one trial, you may want to display a fixation cross for a given time, show a stimulus  and then record participants answers. In Qualtrics, generating this trial once is quite easy. However, your experiment may contain different conditions, each one containing several trials ... If you try to implement this on Qualtrics manually, it will take a lot of time and may lead to errors. Even worse, suppose you painfully managed to build your experiment, and you realize you wanted the fixation cross to be displayed not for two seconds, but only for one. You now have to modify each trial manually, one by one. Uh oh ...  This is the kind of task where you may want to use programming !
 
 ## General overview
 
@@ -25,35 +23,37 @@ Here is a brief summary of the different steps for automating experiments in Qua
 2. Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics;
 3. Fully customize one item on Qualtrics by hand and export your survey in a `.qsf` file
 4. Open this file with Python, copy the configuration of the manually customized item onto the other items and import the new `.qsf` file on Qualtrics;
-5. If you want to change something in your items configuration : go back to step 2 or 3.
+5. If you want to change something in your items configuration : go back to step 2 or 3, depending on the modification.
 
-You may have noticed that this is not a fully automated process. You indeed have to manually customize one item on Qualtrics, or to import and export the survey at its different stages. However, these operations are very easy to perform and do not take a lot of time on the whole.
+You may have noticed that this is not a fully automated process. You have to manually customize one item on Qualtrics, or to import and export the survey at its different stages. However, these operations are quite fast and easy to perform.
 
 ## STEP 1 : Prepare a list of your different items
 
-Create a `.csv` file (or any format you find suitable, as long as you can read it on Python afterwards) containing what is gonna change from trial to trial : questions, possible answers ...
+Create a `.csv` file (or any format you find suitable, as long as you can read it on `Python` afterwards) containing what is gonna change from trial to trial : questions, possible answers ...
 
-![](csv_image.png)
+It should look like this :
+
+![](/images/csv_image.png)
 
 *Example of a .csv file with organization of the different elements*
 
-**Important : you should also have a column containing the trial/item ID, in a structured way. This will be necessary to find your item in the `.qsf` file (step 4).**
+**Important : you should have a column containing the trial/item ID, in a structured way. This will be necessary to find your item in the `.qsf` file (step 4).**
 
-*Example : if you have two conditions - Conflict and No-Conflict - with 20 items in each, you can name your items : C_1, NC_1, C_2 ...*
+*Example : if you have two conditions - Conflict (C) and No-Conflict (NC) - with 20 items in each, you can name your items : C_1, NC_1, C_2, NC_2, C_3 ...*
 
 ## STEP 2 : Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics;
 
-Fortunately, Qualtrics allows you to import a simple survey structure in a `.txt` file, using a specific syntax. However, the features you can implement through this file are very limited. For instance, you cannot set up a response time in it. This file will only allow you to create the "squeletton" of your survey.
+Fortunately, Qualtrics allows you to import a simple survey structure in a `.txt` file, using a specific syntax. However, the features you can implement through this file are very limited. For instance, you cannot configurate the display time. This file will only allow you to create the "squeletton" of your survey.
 
-Before proceeding, read the *Preparing a Simple Format TXT or DOC File* and the *Preparing an Advanced Format TXT or DOC File* sections of the following page, which explain the rules you have to follow in your `.txt` file : [How to import a survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/).
+Before proceeding, read the *Preparing a Simple Format TXT or DOC File* and the *Preparing an Advanced Format TXT or DOC File* sections of the following page, which explain the syntax of your `.txt` file : [How to import a survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/).
 
-![](struct_image.png)
+![](/images/struct_image.png)
 
 *Example of a trial structure template*
 
-Once you have understood how the `.txt` file works, you can generate a basic trial structure. Then, you  only have to use a `for` loop to fill this structure with your different items. I advise you to create one block per trial, as one trial contains several elements in Qualtrics format. Hence, for trial n°1, you will create block n°1 containing fixation cross n°1, question n°1 ...
+Once you have understood how the `.txt` file works, you can generate a basic trial structure. I advise you to create one block per trial, as one trial contains several elements in Qualtrics format. Then, you  only have to use a `for` loop to "fill" this structure with your different items.  Hence, for trial n°1, you will end up with block n°1 containing fixation cross n°1, question n°1 ...
 
-Here is an example of what this part of your code may look like. This generates simple trials, with a fixation cross and a MCQ. The "rt" elements correspond to "timers" in Qualtrics, that allow to record RT or to display an element for a givent duration.
+Here is an example of what this part of your code may look like. This generates simple trials, with a fixation cross and a MCQ. The "rt" elements correspond to "timers" in Qualtrics, that allow to record RT or to display an element for a given duration.
 
 *Note :*
 
@@ -63,9 +63,12 @@ Here is an example of what this part of your code may look like. This generates 
 
 ```python
 # we loop through our questions df
+
 for elt in range(len(questions_formated)) :
+
     # the template in itself, renewed at each iteration
     question_template = qualtrics_structure[1:]
+    
     # the block ID; one block = a complete trial
     question_template[1] = "[[Block:" + questions_formated.loc[elt, 'ID_long'] + "]]"
     # the fixation cross ID
@@ -94,7 +97,7 @@ for elt in range(len(questions_formated)) :
 
 You have to write the final list in a `.txt` file. It should looks like this:
 
-![](final_txt_file_image.png)
+![](images/final_txt_file_image.png)
 
 *Example of a complete trial in the final `.txt` file*
 
@@ -110,7 +113,7 @@ Once your survey has been imported on Qualtrics, choose one of your trials (in Q
 
 *Example of the configuration of a timer in the Qualtrics interface*
 
-For even more advanced customization, you may want to add some [JavaScript code](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/add-javascript/) to the question. After you have customized one trial, note its block ID (e.g., "C_01). 
+For even more advanced customization, you may want to add some [JavaScript code](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/add-javascript/) to the question. After you have customized the trial, remember its block ID (e.g., "C_01). 
 
 Then, export your survey as a `.qsf` file: [How to export a Survey as a QSF](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ExportingaSurveyasaQSF).
 
@@ -124,6 +127,8 @@ Before proceeding, here are two ressources you should read that will explain it 
 - [Quickstart Guide to understand the Qualtrics Survey File](https://gist.github.com/ctesta01/d4255959dace01431fb90618d1e8c241)
 - [How to generate qualtrics questions](https://blog.askesis.pl/post/2019/04/qualtrics-generate.html)
 
+*Note : due to Qualtrics updates, the organization of the `.qsf` file may change a little. You may thus have to update your code in the future.*
+
 ### Open the `.qsf` file
 
 As you read, the file contains `JSON` code. Fortunately, you can read it using a `JSON` encoder/decoder. I used the [json library](https://docs.python.org/3/library/json.html) to do it. To read the qsf file, I just had to use the `json.load` function:
@@ -133,9 +138,9 @@ As you read, the file contains `JSON` code. Fortunately, you can read it using a
 with open('my_project.qsf', encoding = 'utf-8') as f:
   data = json.load(f)
 ```
-At this point, you should be able to manually explore the file. I found the *variable explorer* of the [`Spyder` environment](https://www.spyder-ide.org/) to be very useful to explore the object. As you read, the object contains several elements. In Python, it is a dictionary containing a series of nested dictionaries. You can think of it as a drawer, with drawers in it, which themselves contain other drawers.
+At this point, you should be able to manually explore the file. I found the *variable explorer* of the [`Spyder` environment](https://www.spyder-ide.org/) to be very useful to explore the object. As you read, the object contains several elements. When you open it in `Python`, you end up with a series of nested dictionaries. You can think of it as a drawer, with drawers in it, which themselves contain other drawers...
 
-Here is an example of this Russian doll type of structure:
+Here is an example of this type of structure:
 
 ![](spyder_manual_image.png)
 
@@ -160,12 +165,12 @@ for index in range(0, len(data['SurveyElements'])):
             print(index)
  ```
 
-This code displays the index of the question you formatted manually. You can now find it by hand in the explorer, to see which elements of the `Payload` (which is the part of the question containing its configuration) you may want to copy-paste onto the other questions. This should not be too difficult, as you know what you customized manually on Qualtrics and as the `Payload` elements are named transparently (e.g., `QuestionJS` for the JavaScript elements of the question).
+This code displays the index of the question you formatted manually. You can now find it by hand in the explorer, to see which elements of the **`Payload` (which is the part of the question containing its configuration)** you may want to copy-paste onto the other questions. This should not be too difficult, as you know what you customized manually on Qualtrics and as the `Payload` elements are named transparently (e.g., `QuestionJS` for the JavaScript elements of the question).
 
-Once you have done that, you just have to do the copy-paste operation. Here is an example for multiple-choice questions (MCQs) settings:
+Once you have done that, you simply have to do a copy-paste operation. Here is an example for multiple-choice questions (MCQs) settings:
 
  ```python
-# MCQ PARAMETERS
+# this code copies the configuration of the question 'NC_1_0_MCQ' and applies to all the other MCQ questions of the survey
 
 # looping through the questions
 for index in range(0, len(data['SurveyElements'])):
@@ -181,7 +186,7 @@ for index in range(0, len(data['SurveyElements'])):
             # JS for not displaying next button, going to next question when clicking
             ref_MCQ_JS = data['SurveyElements'][index]['Payload']['QuestionJS']
             
-# now, applying those parameters to other MCQ questions !
+# now, I apply those parameters to other MCQ questions
 
 # looping through the questions
 for index in range(0, len(data['SurveyElements'])):
@@ -196,9 +201,9 @@ for index in range(0, len(data['SurveyElements'])):
 
  ```
  
-You can see that we use [regular expressions](https://docs.python.org/3/library/re.html) to navigate through the question IDs : `if re.search("MCQ$", data['SurveyElements'][index]['Payload']['DataExportTag']):`. This allows us to only modify MCQ question in this example. 
+You can see that we use [regular expressions](https://docs.python.org/3/library/re.html) to navigate through the question IDs : `if re.search("MCQ$", data['SurveyElements'][index]['Payload']['DataExportTag']):`. In this example, it allows us to only modify MCQ question, and not other elements of the survey such as timers, for instance.
  
-You have to repeat this copy-pasting operation for each element of your trial (e.g., the fixation cross parameters, the MCQ timer parameters, etc.).
+You have to repeat this copy-pasting operation for each element you manually modified in your trial (e.g., the fixation cross parameters, the MCQ timer parameters, etc.).
 
 Once you are finished, you only have to write the result in a new `.qsf` file thanks to the `json.dump` function :
 
@@ -210,11 +215,9 @@ with open('my_project_modified.qsf.qsf', 'w') as h:
 
 ### Import the new `.qsf` file on Qualtrics
 
-Finally, you have to import the new .qsf file: [Importing a QSF Survey](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportingASurvey).
+Finally, you have to import the new .qsf file on Qualtrics: [How to import a QSF Survey](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportingASurvey).
 
 You should find all the different trials in the same, customized format. Congratulations, you've done it!
-
-You can now modify the [Survey flow](https://www.qualtrics.com/support/survey-platform/survey-module/survey-flow/survey-flow-overview/), change the general appearance of the survey...
 
 ## STEP 5 : If you want to change something in your items configuration, go back to step 2 or 3.
 
@@ -222,4 +225,6 @@ If you realize that you have some modifications to make to your trial configurat
 
 ## Final note
 
-I hope this page will help you to gain some time if you have to use Qualtrics to build experiments in the future !
+I hope you enjoyed reading this page, and that it will help you to gain some time if you have to use Qualtrics to build experiments in the future !
+
+> "The best part of programming is the triumph of seeing the machine do something useful. \[...\] It makes the boring fun." - Hilary Mason
