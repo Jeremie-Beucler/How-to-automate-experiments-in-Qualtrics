@@ -41,7 +41,7 @@ It should look like this :
 
 *Example : if you have two conditions - Conflict (C) and No-Conflict (NC) - with 20 items in each, you can name your items : C_1, NC_1, C_2, NC_2, C_3 ...*
 
-## Step 2: Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics;
+## Step 2: Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics
 
 Fortunately, Qualtrics allows you to import a simple survey structure in a `.txt` file, using a specific syntax. However, the features you can implement through this file are very limited. For instance, you cannot configurate the display time. This file will only allow you to create the "squeletton" of your survey.
 
@@ -121,7 +121,7 @@ For even more advanced customization, you may want to add some [JavaScript code]
 
 Then, export your survey as a `.qsf` file: [How to export a Survey as a QSF](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ExportingaSurveyasaQSF).
 
-## Step 4: Open this file with Python, copy the configuration of the manually customized item onto the other items and import the new `.qsf` file on Qualtrics;
+## Step 4: Open this file with Python, copy the configuration of the manually customized item onto the other items and import the new `.qsf` file on Qualtrics
 
 ### Understand the structure of the `.qsf` file
 
@@ -159,7 +159,7 @@ If you look at each window's title bar, you can see that I first opened `Data` (
 pyjsonviewer.view_data(json_file="my_project.qsf")
 ```
 
-Here is what it looks like :
+Here is what it looks like:
 
 ![](images/json_viewer_image.png)
 
@@ -240,7 +240,7 @@ Finally, you have to import the new .qsf file on Qualtrics: [How to import a QSF
 
 You should find all the different trials in the same, customized format. Congratulations, you've done it!
 
-## Step 5: If you want to change something in your items configuration, go back to step 2 or 3.
+## Step 5: If you want to change something in your items configuration, go back to step 2 or 3
 
 If you realize that you have some modifications to make to your trial configuration, you can go back to step 2 or 3 (depending on the modification). Note that exporting and importing the survey in the `.qsf` format will not affect the Survey Flow, or other settings you may have fixed manually.
 
