@@ -1,7 +1,7 @@
 # How to automate experiments in Qualtrics
 *Jérémie Beucler* *- October, 2021*
 
-This Github page explains how to partially automate experiments generation on Qualtrics using `Python`. However, it does not adress Survey flow modifications. 
+This Github page explains how to partially automate experiments generation on Qualtrics using `Python`. However, it does not adress the Survey flow, as it is easily editable manually.
 
 Programming perequisites : loops, read & write in a `.txt` or `.csv` file, regular expressions. Note that you may use `R` or a similar programming language instead of `Python` to achieve the same goal.
 
@@ -248,4 +248,4 @@ If you realize that you have some modifications to make to your trial configurat
 
 I hope you had a good time reading this page, and that it will make you gain some time if you have to use Qualtrics to build experiments !
 
-> "The best part of programming is the triumph of seeing the machine do something useful. \[...\] It makes the boring fun." --- **Hilary Mason**
+> **"The best part of programming is the triumph of seeing the machine do something useful. \[...\] It makes the boring fun."** --- Hilary Mason
