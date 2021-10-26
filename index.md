@@ -3,7 +3,7 @@
 
 This Github page explains how to partially automate experiments generation on Qualtrics using `Python`. However, it does not adress Survey flow modifications. 
 
-Programming perequisites : loops, read & write in a `.txt` or `.csv` file, regular expressions. Note that you may also use `R` or a similar programming language.
+Programming perequisites : loops, read & write in a `.txt` or `.csv` file, regular expressions. Note that you may use `R` or a similar programming language instead of `Python` to achieve the same goal.
 
 *This page would not have been created without Matthieu Raoelison, who came up with this process in the first place.*
 
@@ -169,7 +169,7 @@ Here you can see that I opened the item n°223 in the SurveyElements, then its P
 
 ### Copy-paste the customized item configuration onto the other items
 
-Remember, you know the name of the item you customized manually. You now have to loop through your survey's elements to find it.
+Remember, you know the name of the item you customized manually. You now have to loop through your survey's elements to find it, by looking at their `DataExportTag
 
 *Note: as you read, you should only look at Survey Questions (SQ) : hence the `if data['SurveyElements'][index]['Element'] == "SQ":` line.* 
 
@@ -220,7 +220,7 @@ for index in range(0, len(data['SurveyElements'])):
 
  ```
  
-You can see that we use [regular expressions](https://docs.python.org/3/library/re.html) to navigate through the question IDs : `if re.search("MCQ$", data['SurveyElements'][index]['Payload']['DataExportTag']):`. In this example, it allows us to only modify MCQ question, and not other elements of the survey such as timers, for instance.
+You can see that we use [regular expressions](https://docs.python.org/3/library/re.html) to navigate through the question IDs (we imported the library [`re`](https://docs.python.org/3/library/re.html): `if re.search("MCQ$", data['SurveyElements'][index]['Payload']['DataExportTag']):`. Here, it allows us to only modify questions with "MCQ" in their IDs (`DataExportTag`), and not other elements of the survey such as timers, for instance.
  
 You have to repeat this copy-pasting operation for each element you manually modified in your trial (e.g., the fixation cross parameters, the MCQ timer parameters, etc.).
 
