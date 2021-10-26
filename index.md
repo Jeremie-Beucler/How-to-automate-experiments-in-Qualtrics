@@ -11,7 +11,7 @@ Programming perequisites : loops, read & write in a `.txt` or `.csv` file, regul
 
 Qualtrics is an online software that allows to generate online surveys. However, people sometimes use it to design scientific psychology experiments, for several reasons. First, many universities already have a Qualtrics subscription. It is also [very convenient](https://researcher-help.prolific.co/hc/en-gb/articles/360009224113-Qualtrics-Integration-Guide#heading-1) to run an online experiment using Qualtrics and the participants recruitment platform [Prolific](https://www.prolific.com/). Also, thanks to the graphical interface, you do not need any programming skills to build your experiment in Qualtrics.
 
-However, using Qualtrics to build experiment can be quite problematic. Although you can insert some [Javascript code](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/add-javascript/) in your questions and add some logic or randomization to your experiment using the [Survey flow](https://www.qualtrics.com/support/survey-platform/survey-module/survey-flow/survey-flow-overview/), Qualtrics ultimately remains a "point and click" software.
+However, using Qualtrics to build experiment can be very unconvenient, to say the least. Although you can insert some [Javascript code](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/add-javascript/) in your questions and add some logic or randomization to your experiment using the [Survey flow](https://www.qualtrics.com/support/survey-platform/survey-module/survey-flow/survey-flow-overview/), Qualtrics ultimately remains a "point and click" software.
 
 Suppose you want to generate a psychology experiment in Qualtrics. In one trial, you may want to display a fixation cross for a given time, show a stimulus  and then record participants answers. In Qualtrics, generating this trial once is quite easy. However, your experiment may contain different conditions, each one containing several trials ... If you try to implement this on Qualtrics manually, it will take a lot of time and may lead to errors. Even worse, suppose you painfully managed to build your experiment, and you realize you wanted the fixation cross to be displayed not for two seconds, but only for one. You now have to modify each trial manually, one by one. Uh oh ...  This is the kind of task where you may want to use programming !
 
@@ -107,13 +107,17 @@ After that, you have to import this `.txt` file on Qualtrics. This is how to do 
 
 ## STEP 3 : Fully customize one item on Qualtrics by hand and export your survey in a `.qsf` file
 
-Once your survey has been imported on Qualtrics, choose one of your trials (in Qualtrics, a "block"), and customize it manually. This is where you can set up the trial options using the Qualtrics interface. 
+Once your survey has been imported on Qualtrics, choose one of your trials (in Qualtrics, a "block"), and customize it manually. This is where you can set up the trial options using the Qualtrics interface.
+
+For instance, you may want to display the fixation cross for only one second. This is how you would do it on Qualtrics, by modifying the timer of the fixation cross :
 
 ![](/images/qualtrics_manual_image.png)
 
 *Example of the configuration of a timer in the Qualtrics interface*
 
-For even more advanced customization, you may want to add some [JavaScript code](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/add-javascript/) to the question. After you have customized the trial, remember its block ID (e.g., "C_01). 
+For even more advanced customization, you may want to add some [JavaScript code](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/add-javascript/) to the question. 
+
+**Important: you must remember the ID of the trial (block in Qualtrics) you customized (e.g., "C_01"). This way, you will be able to access the different elements (questions in Qualtrics) by the IDs you defined in the `.txt`file (e.g., "C_01_cross" for the fixation cross).**
 
 Then, export your survey as a `.qsf` file: [How to export a Survey as a QSF](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ExportingaSurveyasaQSF).
 
@@ -138,15 +142,30 @@ As you read, the file contains `JSON` code. Fortunately, you can read it using a
 with open('my_project.qsf', encoding = 'utf-8') as f:
   data = json.load(f)
 ```
-At this point, you should be able to manually explore the file. I found the *variable explorer* of the [`Spyder` environment](https://www.spyder-ide.org/) to be very useful to explore the object. As you read, the object contains several elements. When you open it in `Python`, you end up with a series of nested dictionaries. You can think of it as a drawer, with drawers in it, which themselves contain other drawers...
+At this point, you should be able to manually explore the file. I found the *variable explorer* of the [`Spyder` environment](https://www.spyder-ide.org/) to be very useful to explore the object. As you read, the object contains several elements. When you open it in `Python`, you end up with a series of nested lists/dictionaries. You can think of it as a drawer, with drawers in it, which themselves contain other drawers...
 
 Here is an example of this type of structure:
 
 ![](images/spyder_manual_image.png)
 
-*Example of `.qsf` file manual exploration in the variable explorer of Spyder*
+*Example of `.qsf` file manual exploration in the variable explorer of `Spyder`*
 
-If you look at each window's title bar, you can see that I first opened the object `Data`, then `SurveyElements`, then the item n° `223`, then its `Payload`, and finally its `Randomization` settings.
+If you look at each window's title bar, you can see that I first opened `Data` (dict), then `SurveyElements` (list), then the item n° `223` (dict), then its `Payload` (dict), and finally its `Randomization` settings (dict).
+
+*Note: you can also use a `JSON`viewer to explore the file. In `Python`, you can use the library `pyjsonviewer`:*
+
+```
+# view it as a tree, easier to understand the structure
+pyjsonviewer.view_data(json_file="my_project.qsf")
+```
+
+Here is what it looks like :
+
+![](images/json_viewer_image.png)
+
+*Example of `.qsf` file manual exploration in `pyjsonviewer`*
+
+Here you can see that I opened the item n°223 in the SurveyElements, then its Payload and then its QuestionDescription.
 
 ### Copy-paste the customized item configuration onto the other items
 
@@ -165,7 +184,7 @@ for index in range(0, len(data['SurveyElements'])):
             print(index)
  ```
 
-This code displays the index of the question you formatted manually. You can now find it by hand in the explorer, to see which elements of the **`Payload` (which is the part of the question containing its configuration)** you may want to copy-paste onto the other questions. This should not be too difficult, as you know what you customized manually on Qualtrics and as the `Payload` elements are named transparently (e.g., `QuestionJS` for the JavaScript elements of the question).
+This code displays the index of the question you formatted manually. You can now find it by hand in the explorer, to see which elements of the **`Payload` (which is the part of the question containing its configuration)** you may want to copy-paste onto the other questions. This should not be too difficult, as you know what you customized manually on Qualtrics and as the `Payload` elements are named transparently (e.g., `QuestionJS` for the `JavaScript` elements of the question).
 
 Once you have done that, you simply have to do a copy-paste operation. Here is an example for multiple-choice questions (MCQs) settings:
 
