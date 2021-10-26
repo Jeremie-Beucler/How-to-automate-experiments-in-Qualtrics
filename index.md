@@ -1,9 +1,9 @@
 # How to automate experiments in Qualtrics
 *Jérémie Beucler* *- October, 2021*
 
-This Github page explains how to partially automate experiments generation on Qualtrics using `Python`. Note that you may do the same thing using `R` or a similar programming language.
+This Github page explains how to partially automate experiments generation on Qualtrics using `Python`. However, it does not adress Survey flow modifications. 
 
-Programming perequisites : loops, read & write in a `.txt` or `.csv` file, regular expressions.
+Programming perequisites : loops, read & write in a `.txt` or `.csv` file, regular expressions. Note that you may also use `R` or a similar programming language.
 
 *This page would not have been created without Matthieu Raoelison, who came up with this process in the first place.*
 
@@ -27,7 +27,7 @@ Here is a brief summary of the different steps for automating experiments in Qua
 
 You may have noticed that this is not a fully automated process. You have to manually customize one item on Qualtrics, or to import and export the survey at its different stages. However, these operations are quite fast and easy to perform.
 
-## STEP 1 : Prepare a list of your different items
+## Step 1: Prepare a list of your different items
 
 Create a `.csv` file (or any format you find suitable, as long as you can read it on `Python` afterwards) containing what is gonna change from trial to trial : questions, possible answers ...
 
@@ -41,7 +41,7 @@ It should look like this :
 
 *Example : if you have two conditions - Conflict (C) and No-Conflict (NC) - with 20 items in each, you can name your items : C_1, NC_1, C_2, NC_2, C_3 ...*
 
-## STEP 2 : Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics;
+## Step 2: Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics;
 
 Fortunately, Qualtrics allows you to import a simple survey structure in a `.txt` file, using a specific syntax. However, the features you can implement through this file are very limited. For instance, you cannot configurate the display time. This file will only allow you to create the "squeletton" of your survey.
 
@@ -55,7 +55,7 @@ Once you have understood how the `.txt` file works, you can generate a basic tri
 
 Here is an example of what this part of your code may look like. This generates simple trials, with a fixation cross and a MCQ. The "rt" elements correspond to "timers" in Qualtrics, that allow to record RT or to display an element for a given duration.
 
-*Note :*
+*Note:*
 
 - *`questions_formated` is the data frame (`.csv` file) with all our items, ID, possible answers;*
 - *`question_template` is a list of strings containing the structure of a typical trial;*
@@ -103,9 +103,9 @@ You have to write the final list in a `.txt` file. One trial should looks like t
 
 You then have to import this `.txt` file on Qualtrics. This is how to do it: [How to import a TXT Survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportTXTDoc).
 
-*Note : During the importation process, Qualtrics automatically adds the date after your block's name (e.g., "No_conflict_1_0" will become "No_conflict_1_0 - Oct 20, 2021").*
+*Note: During the importation process, Qualtrics automatically adds the date after your block's name (e.g., "No_conflict_1_0" will become "No_conflict_1_0 - Oct 20, 2021").*
 
-## STEP 3 : Fully customize one item on Qualtrics by hand and export your survey in a `.qsf` file
+## Step 3: Fully customize one item on Qualtrics by hand and export your survey in a `.qsf` file
 
 Once your survey has been imported on Qualtrics, choose one of your trials (in Qualtrics, a "block"), and customize it manually. This is where you can set up the trial options using the Qualtrics interface.
 
@@ -121,7 +121,7 @@ For even more advanced customization, you may want to add some [JavaScript code]
 
 Then, export your survey as a `.qsf` file: [How to export a Survey as a QSF](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ExportingaSurveyasaQSF).
 
-## STEP 4 : Open this file with Python, copy the configuration of the manually customized item onto the other items and import the new `.qsf` file on Qualtrics;
+## Step 4: Open this file with Python, copy the configuration of the manually customized item onto the other items and import the new `.qsf` file on Qualtrics;
 
 ### Understand the structure of the `.qsf` file
 
@@ -131,7 +131,7 @@ Before proceeding, here are two ressources you should read that will explain it 
 - [Quickstart Guide to understand the Qualtrics Survey File](https://gist.github.com/ctesta01/d4255959dace01431fb90618d1e8c241)
 - [How to generate qualtrics questions](https://blog.askesis.pl/post/2019/04/qualtrics-generate.html)
 
-*Note : due to Qualtrics updates, the organization of the `.qsf` file may change a little. You may thus have to update your code in the future.*
+*Note: due to Qualtrics updates, the organization of the `.qsf` file may change a little. You may thus have to slightly update your code in the future.*
 
 ### Open the `.qsf` file
 
@@ -171,7 +171,7 @@ Here you can see that I opened the item n°223 in the SurveyElements, then its P
 
 Remember, you know the name of the item you customized manually. You now have to loop through your survey's elements to find it.
 
-*Note : as you read, you should only look at Survey Questions (SQ) : hence the `if data['SurveyElements'][index]['Element'] == "SQ":` line.* 
+*Note: as you read, you should only look at Survey Questions (SQ) : hence the `if data['SurveyElements'][index]['Element'] == "SQ":` line.* 
 
 ```python
 # looping through the questions
@@ -238,7 +238,7 @@ Finally, you have to import the new .qsf file on Qualtrics: [How to import a QSF
 
 You should find all the different trials in the same, customized format. Congratulations, you've done it!
 
-## STEP 5 : If you want to change something in your items configuration, go back to step 2 or 3.
+## Step 5: If you want to change something in your items configuration, go back to step 2 or 3.
 
 If you realize that you have some modifications to make to your trial configuration, you can go back to step 2 or 3 (depending on the modification). Note that exporting and importing the survey in the `.qsf` format will not affect the Survey Flow, or other settings you may have fixed manually.
 
