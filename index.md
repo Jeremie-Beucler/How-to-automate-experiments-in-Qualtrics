@@ -227,4 +227,4 @@ If you realize that you have some modifications to make to your trial configurat
 
 I hope you enjoyed reading this page, and that it will help you to gain some time if you have to use Qualtrics to build experiments in the future !
 
-> "The best part of programming is the triumph of seeing the machine do something useful. \[...\] It makes the boring fun." - Hilary Mason
+> "The best part of programming is the triumph of seeing the machine do something useful. \[...\] It makes the boring fun." --- **Hilary Mason**
