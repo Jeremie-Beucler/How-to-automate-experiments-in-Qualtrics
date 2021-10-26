@@ -7,6 +7,8 @@ Programming perequisites : loops, read & write in a `.txt` or `.csv` file, regul
 
 *This page would not have been created without Matthieu Raoelison, who came up with this process in the first place.*
 
+***
+
 ## Introduction
 
 Qualtrics is an online software that allows to generate online surveys. However, people sometimes use it to design scientific psychology experiments, for several reasons. First, many universities already have a Qualtrics subscription. It is also [very convenient](https://researcher-help.prolific.co/hc/en-gb/articles/360009224113-Qualtrics-Integration-Guide#heading-1) to run an online experiment using Qualtrics and the participants recruitment platform [Prolific](https://www.prolific.com/). Also, thanks to the graphical interface, you do not need any programming skills to build your experiment in Qualtrics.
@@ -251,6 +253,9 @@ If you realize that you have some modifications to make to your trial configurat
 
 I hope you had a good time reading this page, and that it will make you gain some time if you have to use Qualtrics to build experiments !
 
-If you have any questions, you can contact me at <jeremie.beucler@gmail.com>
+***
 
 > **"The best part of programming is the triumph of seeing the machine do something useful. \[...\] It makes the boring fun."** --- Hilary Mason
+
+***
+If you have any questions, you can contact me at:        <jeremie.beucler@gmail.com>
