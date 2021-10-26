@@ -254,4 +254,4 @@ I hope you had a good time reading this page, and that it will make you gain som
 > **"The best part of programming is the triumph of seeing the machine do something useful. \[...\] It makes the boring fun."** --- Hilary Mason
 
 ***
-If you have any questions, you can contact me:&nbsp <jeremie.beucler@gmail.com>
+If you have any questions, you can contact me: &nbsp; <jeremie.beucler@gmail.com>
