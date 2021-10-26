@@ -255,5 +255,7 @@ I hope you had a good time reading this page, and that it will make you gain som
 
 <br>
 <br>
+
 ***
+
 If you have any questions, you can contact me: &nbsp;&nbsp; <jeremie.beucler@gmail.com>
