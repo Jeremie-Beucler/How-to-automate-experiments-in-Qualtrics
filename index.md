@@ -222,7 +222,9 @@ for index in range(0, len(data['SurveyElements'])):
 
  ```
  
-You can see that we use [regular expressions](https://docs.python.org/3/library/re.html) to navigate through the question IDs (we imported the library [`re`](https://docs.python.org/3/library/re.html): `if re.search("MCQ$", data['SurveyElements'][index]['Payload']['DataExportTag']):`. Here, it allows us to only modify questions with "MCQ" in their IDs (`DataExportTag`), and not other elements of the survey such as timers, for instance.
+You can see that we use [regular expressions](https://docs.python.org/3/library/re.html) to navigate through the question IDs (we imported the library [`re`](https://docs.python.org/3/library/re.html)): `if re.search("MCQ$", data['SurveyElements'][index]['Payload']['DataExportTag']):`.
+
+Here, it allows us to only modify questions with "MCQ" in their IDs (`DataExportTag`), and not other elements of the survey such as timers, for instance.
  
 You have to repeat this copy-pasting operation for each element you manually modified in your trial (e.g., the fixation cross parameters, the MCQ timer parameters, etc.).
 
