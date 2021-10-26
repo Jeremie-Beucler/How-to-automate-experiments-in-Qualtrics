@@ -186,7 +186,7 @@ for index in range(0, len(data['SurveyElements'])):
             print(index)
  ```
 
-This code displays the index of the question you formatted manually. You can now find it by hand in the explorer, to see which elements of the **`Payload` (which is the part of the question containing its configuration)** you may want to copy-paste onto the other questions. This should not be too difficult, as you know what you customized manually on Qualtrics and as the `Payload` elements are named transparently (e.g., `QuestionJS` for the `JavaScript` elements of the question).
+This code displays the index of the multiple choice question (MCQ) element you formatted manually. You can now find it by hand in the explorer, to see which elements of the **`Payload` (which is the part of the question containing its configuration)** you may want to copy-paste onto the other questions. This should not be too difficult, as you know what you customized manually on Qualtrics and as the `Payload` elements are named transparently (e.g., `QuestionJS` for the `JavaScript` elements of the question).
 
 Once you have done that, you simply have to do a copy-paste operation. Here is an example for multiple-choice questions (MCQs) settings:
 
