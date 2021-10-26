@@ -97,7 +97,7 @@ for elt in range(len(questions_formated)) :
 
 You have to write the final list in a `.txt` file. It should looks like this:
 
-![](images/final_txt_file_image.png)
+![](/images/final_txt_file_image.png)
 
 *Example of a complete trial in the final `.txt` file*
 
@@ -109,7 +109,7 @@ After that, you have to import this `.txt` file on Qualtrics. This is how to do 
 
 Once your survey has been imported on Qualtrics, choose one of your trials (in Qualtrics, a "block"), and customize it manually. This is where you can set up the trial options using the Qualtrics interface. 
 
-![](qualtrics_manual_image.png)
+![](/images/qualtrics_manual_image.png)
 
 *Example of the configuration of a timer in the Qualtrics interface*
 
@@ -142,7 +142,7 @@ At this point, you should be able to manually explore the file. I found the *var
 
 Here is an example of this type of structure:
 
-![](spyder_manual_image.png)
+![](images/spyder_manual_image.png)
 
 *Example of `.qsf` file manual exploration in the variable explorer of Spyder*
 
@@ -225,6 +225,6 @@ If you realize that you have some modifications to make to your trial configurat
 
 ## Final note
 
-I hope you enjoyed reading this page, and that it will help you to gain some time if you have to use Qualtrics to build experiments in the future !
+I hope you had a good time reading this page, and that it will make you gain some time if you have to use Qualtrics to build experiments !
 
 > "The best part of programming is the triumph of seeing the machine do something useful. \[...\] It makes the boring fun." --- **Hilary Mason**
