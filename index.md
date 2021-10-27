@@ -243,7 +243,7 @@ with open('my_project_modified.qsf.qsf', 'w') as h:
 
 Finally, you have to import the new .qsf file on Qualtrics: [How to import a QSF Survey](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportingASurvey).
 
-You should find all the different trials in the same, customized format. Congratulations, you have done it! 🎉🎉🎉
+You should find all the different trials in the same, customized format. Congratulations, you have done it! 🎉
 
 ## <a name="5"></a>Step 5: If you want to change something in your items configuration, go back to step 2 or 3
 
@@ -262,7 +262,7 @@ If you have any questions, you can contact me: &nbsp;&nbsp; <jeremie.beucler@gma
     
 ***
     
-**"The best part of programming is the triumph of seeing the machine do something useful. \[...\] It makes the boring fun."** --- Hilary Mason
+**"The best part of programming is the triumph of seeing the machine do something useful. \[...\] It makes the boring fun."**  &mdash; Hilary Mason
 
 <br>
 <br>
