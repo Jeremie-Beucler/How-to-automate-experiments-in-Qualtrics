@@ -262,3 +262,5 @@ I hope you enjoyed reading this page, and that it will make you gain some time i
 ***
 
 If you have any questions, you can contact me: &nbsp;&nbsp; <jeremie.beucler@gmail.com>
+
+<br>
