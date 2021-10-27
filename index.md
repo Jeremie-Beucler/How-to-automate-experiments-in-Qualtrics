@@ -3,7 +3,9 @@
 
 This Github page explains how to partially automate experiments generation on Qualtrics using `Python`. However, it does not deal with modifications of the Survey flow, which is easily editable manually.
 
-Programming perequisites : loops, read & write in a `.txt` or `.csv` file, regular expressions. Note that you may use `R` or a similar programming language instead of `Python` to achieve the same goal.
+<ins>Programming perequisites:<ins> loops, read & write in a `.txt` or `.csv` file, regular expressions.[^1]
+
+[^1]: Note that you may use `R` or a similar programming language instead of `Python` to achieve the same goal.
 
 *This page would not have been created without Matthieu Raoelison, who came up with this process in the first place.*
 
@@ -39,7 +41,7 @@ It should look like this :
 
 **Important : you should have a column containing the trial/item ID, in a structured way. This will be necessary to find your item in the `.qsf` file (step 4).**
 
-*Example : if you have two conditions - Conflict (C) and No-Conflict (NC) - with 20 items in each, you can name your items : C_1, NC_1, C_2, NC_2, C_3 ...*
+*<ins>Example:<ins> if you have two conditions - Conflict (C) and No-Conflict (NC) - with 20 items in each, you can name your items : C_1, NC_1, C_2, NC_2, C_3 ...*
 
 ## <a name="2"></a>Step 2: Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics
 
@@ -55,7 +57,7 @@ Once you have understood how the `.txt` file works, you can generate a basic tri
 
 Here is an example of what this part of your code may look like. This generates simple trials, with a fixation cross and a MCQ. The "rt" elements correspond to "timers" in Qualtrics, that allow to record RT or to display an element for a given duration.
 
-*Note:*
+*<ins>Note:<ins>*
 
 - *`questions_formated` is the data frame (`.csv` file) with all our items, ID, possible answers;*
 - *`question_template` is a list of strings containing the structure of a typical trial;*
@@ -101,9 +103,9 @@ You have to write the final list in a `.txt` file. One trial should looks like t
 
 *Example of a complete trial in the final `.txt` file*
 
-You then have to import this `.txt` file on Qualtrics. This is how to do it: [How to import a TXT Survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportTXTDoc).
+You then have to import this `.txt` file on Qualtrics.[^2] This is how to do it: [How to import a TXT Survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportTXTDoc).
 
-*Note: During the importation process, Qualtrics automatically adds the date after your block's name (e.g., "No_conflict_1_0" will become "No_conflict_1_0 - Oct 20, 2021").*
+[^2]: During the importation process, Qualtrics automatically adds the date after your block's name (e.g., "No_conflict_1_0" will become "No_conflict_1_0 - Oct 20, 2021").
 
 ## <a name="3"></a>Step 3: Fully customize one trial on Qualtrics by hand and export your survey in a `.qsf` file
 
@@ -125,13 +127,13 @@ Then, export your survey as a `.qsf` file: [How to export a Survey as a QSF](htt
 
 ### Understand the structure of the `.qsf` file
 
-For this last stage, it is crucial that you understand what a `.qsf` file is and how it is organized.
+For this last stage, it is crucial that you understand what a `.qsf` file is and how it is organized.[^3]
 
 Before proceeding, here are two ressources you should read that will explain it to you:
 - [Quickstart Guide to understand the Qualtrics Survey File](https://gist.github.com/ctesta01/d4255959dace01431fb90618d1e8c241)
 - [How to generate qualtrics questions](https://blog.askesis.pl/post/2019/04/qualtrics-generate.html)
 
-*Note: due to Qualtrics updates, the organization of the `.qsf` file may change a little. You may thus have to slightly update your code in the future.*
+[^3]: Due to Qualtrics updates, the organization of the `.qsf` file may change a little. You may thus have to slightly update your code in the future.
 
 ### Open the `.qsf` file
 
@@ -152,7 +154,7 @@ Here is an example of this type of structure:
 
 If you look at each window's title bar, you can see that I first opened `Data` (dict), then `SurveyElements` (list), then the item n° `223` (dict), then its `Payload` (dict), and finally its `Randomization` settings (dict).
 
-*Note: you can also use a `JSON`viewer to explore the file. In `Python`, you can use the library `pyjsonviewer`:*
+*<ins>Note:<ins> you can also use a `JSON`viewer to explore the file. In `Python`, you can use the library `pyjsonviewer`:*
 
 ```
 # view it as a tree, easier to understand the structure
@@ -171,9 +173,9 @@ Here you can see that I opened the item n°`223` in the `SurveyElements`, then i
 
 Remember, you know the name of the item you customized manually. You now have to loop through your survey's elements to find it, by looking at their **`DataExportTag`, which is inside the `Payload` element and corresponds to the question ID.**
 
-Here is a way to do it, using a `for` loop:
+Here is a way to do it, using a `for` loop:[^4]
 
-*Note: as you read, you should only look at Survey Questions (SQ) : hence the `if data['SurveyElements'][index]['Element'] == "SQ":` line.* 
+[^4]: As you read, you should only look at Survey Questions (SQ) : hence the `if data['SurveyElements'][index]['Element'] == "SQ":` line.
 
 ```python
 # looping through the questions
@@ -249,7 +251,7 @@ If you realize that you have some modifications to make to your trial configurat
 
 ## Final note
 
-I hope you had a good time reading this page, and that it will make you gain some time if you have to use Qualtrics to build experiments !
+I hope you enjoyed reading this page, and that it will make you gain some time if you have to use Qualtrics to build experiments !
 
 > **"The best part of programming is the triumph of seeing the machine do something useful. \[...\] It makes the boring fun."** --- Hilary Mason
 
