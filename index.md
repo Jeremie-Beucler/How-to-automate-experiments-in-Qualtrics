@@ -11,7 +11,7 @@ This Github page explains how to partially automate experiments generation on Qu
 
 ## Introduction
 
-Qualtrics is an online software that allows to generate online surveys. However, people sometimes use it to design scientific psychology experiments, for several reasons. First, many universities already have a Qualtrics subscription. It is also [very convenient](https://researcher-help.prolific.co/hc/en-gb/articles/360009224113-Qualtrics-Integration-Guide#heading-1) to run an online experiment using Qualtrics and the participants recruitment platform [Prolific](https://www.prolific.com/). Also, thanks to the graphical interface, you do not need any programming skills to build your experiment in Qualtrics.
+Qualtrics is an online software that allows to generate surveys. However, people sometimes use it to design scientific psychology experiments, for several reasons. First, many universities already have a Qualtrics subscription. It is also [very convenient](https://researcher-help.prolific.co/hc/en-gb/articles/360009224113-Qualtrics-Integration-Guide#heading-1) to run an online experiment using Qualtrics and the participants recruitment platform [Prolific](https://www.prolific.com/). Also, thanks to the graphical interface, you do not need any programming skills to build your experiment in Qualtrics.
 
 However, using Qualtrics to build experiment can be very unconvenient, to say the least. Although you can insert some [Javascript code](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/add-javascript/) in your questions and add some logic or randomization to your experiment using the [Survey flow](https://www.qualtrics.com/support/survey-platform/survey-module/survey-flow/survey-flow-overview/), Qualtrics ultimately remains a "point and click" software.
 
@@ -57,7 +57,7 @@ Once you have understood how the `.txt` file works, you can generate a basic tri
 
 Here is an example of what this part of your code may look like. This generates simple trials, with a fixation cross and a MCQ. The "rt" elements correspond to "timers" in Qualtrics, that allow to record RT or to display an element for a given duration.
 
-*<ins>Note:<ins>*
+<ins>*Note:*<ins>
 
 - *`questions_formated` is the data frame (`.csv` file) with all our items, ID, possible answers;*
 - *`question_template` is a list of strings containing the structure of a typical trial;*
