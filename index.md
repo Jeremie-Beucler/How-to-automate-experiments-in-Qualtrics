@@ -3,7 +3,7 @@
 
 This Github page explains how to partially automate experiments generation on Qualtrics using `Python`. However, it does not deal with modifications of the Survey flow, which is easily editable manually.
 
-<ins>Programming perequisites:<ins> loops, read & write in a `.txt` or `.csv` file, regular expressions.[^1]
+<ins>Programming perequisites<ins>: loops, read & write in a `.txt` or `.csv` file, regular expressions.[^1]
 
 [^1]: Note that you may use `R` or a similar programming language instead of `Python` to achieve the same goal.
 
