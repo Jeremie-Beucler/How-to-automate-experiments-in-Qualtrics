@@ -253,10 +253,12 @@ If you realize that you have some modifications to make to your trial configurat
 
 I hope you enjoyed reading this page, and that it will make you gain some time if you have to use Qualtrics to build experiments !
 
+<br>
+
 If you have any questions, you can contact me: &nbsp;&nbsp; <jeremie.beucler@gmail.com>
     
 <br>
-<br>
+
     
 ***
     
