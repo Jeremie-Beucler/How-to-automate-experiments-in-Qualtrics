@@ -53,7 +53,7 @@ Before proceeding, read the *Preparing a Simple Format TXT or DOC File* and the 
 
 *A trial structure template*
 
-Once you have understood how the `.txt` file works, you can generate a basic trial structure. I advise you to create one block per trial, as one trial contains several elements in Qualtrics format. Then, you  only have to use a `for` loop to "fill" this structure with your different items.  Hence, for trial n°1, you will end up with block n°1 containing fixation cross n°1, question n°1 ...
+Once you have understood how the `.txt` file works, you can generate a basic trial structure. I advise you to create one block per trial, as one trial contains several elements in Qualtrics format. Hence, for trial n°1, you will end up with block n°1 containing fixation cross n°1, question n°1 ... Then, you  only have to use a `for` loop to "fill" this structure with your different items. 
 
 Here is an example of what this part of your code may look like. This generates simple trials, with a fixation cross and a MCQ. The "rt" elements correspond to "timers" in Qualtrics, that allow to record RT or to display an element for a given duration.
 
