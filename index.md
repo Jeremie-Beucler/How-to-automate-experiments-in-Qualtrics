@@ -19,7 +19,7 @@ Suppose you want to generate a psychology experiment in Qualtrics. In one trial,
 
 Here is a brief summary of the different steps for automating experiments in Qualtrics:
 
-1. Prepare a list of your different items (e.g., in a `.csv` file);(#one)
+1. Prepare a list of your different items (e.g., in a `.csv` file); (#one)
 2. Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics;(#2)
 3. Fully customize one item on Qualtrics by hand and export your survey in a `.qsf` file(#3)
 4. Open this file with Python, copy the configuration of the manually customized item onto the other items and import the new `.qsf` file on Qualtrics;(#4)
