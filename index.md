@@ -21,15 +21,15 @@ Suppose you want to generate a psychology experiment in Qualtrics. In one trial,
 
 Here is a brief summary of the different steps for automating experiments in Qualtrics:
 
-1. Prepare a list of your different items (e.g., in a `.csv` file);(#items)
-2. Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics;(#2)
-3. Fully customize one item on Qualtrics by hand and export your survey in a `.qsf` file(#3)
-4. Open this file with Python, copy the configuration of the manually customized item onto the other items and import the new `.qsf` file on Qualtrics;(#4)
-5. If you want to change something in your items configuration : go back to step 2 or 3, depending on the modification.(#5)
+1. [Prepare a list of your different items (e.g., in a `.csv` file);](#1)
+2. [Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics;](#2)
+3. [Fully customize one item on Qualtrics by hand and export your survey in a `.qsf` file;](#3)
+4. [Open this file with Python, copy the configuration of the manually customized item onto the other items and import the new `.qsf` file on Qualtrics;](#4)
+5. [If you want to change something in your items configuration : go back to step 2 or 3, depending on the modification.](#5)
 
 You may have noticed that this is not a fully automated process. You have to manually customize one item on Qualtrics, or to import and export the survey at its different stages. However, these operations are quite fast and easy to perform.
 
-## <a name="items"></a>Step 1: Prepare a list of your different items
+## <a name="1"></a>Step 1: Prepare a list of your different items
 
 Create a `.csv` file (or any format you find suitable, as long as you can read it on `Python` afterwards) containing what is gonna change from trial to trial : questions, possible answers ...
 
