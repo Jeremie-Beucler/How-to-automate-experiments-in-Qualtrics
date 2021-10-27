@@ -45,7 +45,7 @@ It should look like this :
 
 ## <a name="2"></a>Step 2: Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics
 
-Fortunately, Qualtrics allows you to import a simple survey structure in a `.txt` file, using a specific syntax. However, the features you can implement through this file are very limited. For instance, you cannot configurate the display time. This file will only allow you to create the "squeletton" of your survey.
+Fortunately, Qualtrics allows you to import a simple survey structure in a `.txt` file, using a specific syntax. However, the features you can implement through this file are very limited. For instance, you cannot configurate stimuli display time in it. This file will only allow you to create the "squeletton" of your survey.
 
 Before proceeding, read the *Preparing a Simple Format TXT or DOC File* and the *Preparing an Advanced Format TXT or DOC File* sections of the following page, which explain the syntax of your `.txt` file : [How to import a survey on Qualtrics](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/).
 
