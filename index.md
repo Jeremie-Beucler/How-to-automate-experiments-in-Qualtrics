@@ -262,13 +262,7 @@ If you have any questions, you can contact me: &nbsp;&nbsp; <jeremie.beucler@gma
     
 ***
     
-> **"The best part of programming is the triumph of seeing the machine do something useful. \[...\] It makes the boring fun."** --- Hilary Mason
+**"The best part of programming is the triumph of seeing the machine do something useful. \[...\] It makes the boring fun."** --- Hilary Mason
 
 <br>
-
-
-
-
-
-
 <br>
