@@ -154,7 +154,7 @@ Here is an example of this type of structure:
 
 If you look at each window's title bar, you can see that I first opened `Data` (dict), then `SurveyElements` (list), then the item n° `223` (dict), then its `Payload` (dict), and finally its `Randomization` settings (dict).
 
-<ins>*Note:<ins> you can also use a `JSON`viewer to explore the file. In `Python`, you can use the library `pyjsonviewer`:*
+*<ins>Note:<ins> you can also use a `JSON`viewer to explore the file. In `Python`, you can use the library `pyjsonviewer`:*
 
 ```
 # view it as a tree, easier to understand the structure
