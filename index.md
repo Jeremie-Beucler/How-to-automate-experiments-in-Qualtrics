@@ -3,7 +3,7 @@
 
 This Github page explains how to partially automate experiments generation on Qualtrics using `Python`. However, it does not deal with modifications of the Survey flow, which is easily editable manually.
 
-<ins>Programming perequisites<ins>: loops, read & write in a `.txt` or `.csv` file, regular expressions.[^1]
+<ins>Programming prerequisites:</ins> loops, read & write in a `.txt` or `.csv` file, regular expressions.[^1]
 
 [^1]: Note that you may use `R` or a similar programming language instead of `Python` to achieve the same goal.
 
@@ -41,7 +41,7 @@ It should look like this :
 
 **Important : you should have a column containing the trial/item ID, in a structured way. This will be necessary to find your item in the `.qsf` file (step 4).**
 
-*<ins>Example:<ins> if you have two conditions - Conflict (C) and No-Conflict (NC) - with 20 items in each, you can name your items : C_1, NC_1, C_2, NC_2, C_3 ...*
+*<ins>Example:</ins> if you have two conditions - Conflict (C) and No-Conflict (NC) - with 20 items in each, you can name your items : C_1, NC_1, C_2, NC_2, C_3 ...*
 
 ## <a name="2"></a>Step 2: Write a program generating a `.txt` file with the complete structure of the experiment and import it on Qualtrics
 
@@ -243,7 +243,7 @@ with open('my_project_modified.qsf.qsf', 'w') as h:
 
 Finally, you have to import the new .qsf file on Qualtrics: [How to import a QSF Survey](https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ImportingASurvey).
 
-You should find all the different trials in the same, customized format. Congratulations, you have done it!
+You should find all the different trials in the same, customized format. Congratulations, you have done it! 🎉🎉🎉
 
 ## <a name="5"></a>Step 5: If you want to change something in your items configuration, go back to step 2 or 3
 
