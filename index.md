@@ -154,7 +154,7 @@ Here is an example of this type of structure:
 
 If you look at each window's title bar, you can see that I first opened `Data` (dict), then `SurveyElements` (list), then the item n° `223` (dict), then its `Payload` (dict), and finally its `Randomization` settings (dict).
 
-*<ins>Note:<ins> you can also use a `JSON`viewer to explore the file. In `Python`, you can use the library `pyjsonviewer`:*
+<ins>*Note:<ins> you can also use a `JSON`viewer to explore the file. In `Python`, you can use the library `pyjsonviewer`:*
 
 ```
 # view it as a tree, easier to understand the structure
@@ -173,21 +173,21 @@ Here you can see that I opened the item n°`223` in the `SurveyElements`, then i
 
 Remember, you know the name of the item you customized manually. You now have to loop through your survey's elements to find it, by looking at their **`DataExportTag`, which is inside the `Payload` element and corresponds to the question ID.**
 
-Here is a way to do it, using a `for` loop:[^4]
-
-[^4]: As you read, you should only look at Survey Questions (SQ) : hence the `if data['SurveyElements'][index]['Element'] == "SQ":` line.
+Here is a way to do it, using a `for` loop:
 
 ```python
 # looping through the questions
 for index in range(0, len(data['SurveyElements'])):
     # checking if question (SQ = survey questions)
-    if data['SurveyElements'][index]['Element'] == "SQ":
+    if data['SurveyElements'][index]['Element'] == "SQ":[^4]
         # checking if this is the question already formatted manually (NC_1_0 ...)
         if data['SurveyElements'][index]['Payload']['DataExportTag'] == 'NC_1_0_MCQ' :
             # printing index to look at it manually !
             print(index)
  ```
 
+[^4]: As you read, you should only look at Survey Questions (SQ)
+    
 This code displays the index of the multiple choice question (MCQ) element you formatted manually. You can now find it by hand in the explorer, to see which elements of the **`Payload` (which is the part of the question containing its configuration)** you may want to copy-paste onto the other questions. This should not be too difficult, as you know what you customized manually on Qualtrics and as the `Payload` elements are named transparently (e.g., `QuestionJS` for the `JavaScript` elements of the question).
 
 Once you have done that, you simply have to do a copy-paste operation. Here is an example for multiple-choice questions (MCQs) settings:
