@@ -17,7 +17,7 @@ However, designing experiments with Qualtrics can be challenging! While it is po
 
 Suppose you want to generate a psychology experiment in Qualtrics. You may want to display a fixation cross for a given time, show a stimulus  and then record participants answers. In Qualtrics, generating this trial once is quite easy. However, your experiment may contain different conditions, each one containing several trials... If you try to implement this manually on Qualtrics, it will take a lot of time and may lead to errors! Even worse, suppose you painfully managed to build your experiment and then realize you wanted the fixation cross to be displayed only for one second instead of two. You now have to manually modify each trial individually! This motivates our guide to automate the generation of Qualtrics experiments. 
 
-Do not hesitate to create a `GitHub Issue` if you see anything that could be improved :)
+Do not hesitate to create a `GitHub Issue` if you see anything that could be improved :smiley:
 
 ## General overview
 
