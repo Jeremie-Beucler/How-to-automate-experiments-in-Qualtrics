@@ -1,17 +1,17 @@
 # How to automate experiments in Qualtrics
 *Jérémie Beucler* *- October, 2021*
 
-This Github page explains how to partially automate experiments generation on Qualtrics using `Python`.[^1] However, it does not deal with modifications of the Survey flow, which is easily editable manually.
+This page explains how to partially automate experiments generation on Qualtrics using `Python`.[^1] However, it does not deal with modifications of the Survey flow, which we recommend to manually edit.
 
-[^1]: Note that you may use `R` or a similar programming language instead of `Python` to achieve the same goal. You only have to adapt the code and the libraries to the language you chose to use.
+[^1]: Note that you may use `R` or a similar programming language instead of `Python` to achieve the same goal. You only have to adapt the code and the libraries to the language of your choice.
 
 <ins>Programming prerequisites:</ins> loops, read & write in a `.txt` or `.csv` file, regular expressions.
 
-*This page would not have been created without Matthieu Raoelison, who came up with this process in the first place.*
+*This page builds upon the work of Matthieu Raoelison.*
 
 ## Introduction
 
-Qualtrics is an online software that allows to generate surveys. However, people sometimes use it to design scientific psychology experiments, for several reasons. First, many universities already have a Qualtrics subscription. It is also [very convenient](https://researcher-help.prolific.co/hc/en-gb/articles/360009224113-Qualtrics-Integration-Guide#heading-1) to run an online experiment using Qualtrics and the participants recruitment platform [Prolific](https://www.prolific.com/). Also, thanks to the graphical interface, you do not need any programming skills to build your experiment in Qualtrics.
+Qualtrics is an online software to generate surveys that may be used to design psychology experiments, for several reasons. First, your university probably has a Qualtrics subscription. It is also [very convenient](https://researcher-help.prolific.co/hc/en-gb/articles/360009224113-Qualtrics-Integration-Guide#heading-1) to run online experiments using Qualtrics and the participants recruitment platform [Prolific](https://www.prolific.com/). Also, thanks to the graphical interface, you do not need any programming skills to build your experiment in Qualtrics.
 
 However, using Qualtrics to build experiment can be very unconvenient, to say the least. Although you can insert some [Javascript code](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/add-javascript/) in your questions and add some logic or randomization to your experiment using the [Survey flow](https://www.qualtrics.com/support/survey-platform/survey-module/survey-flow/survey-flow-overview/), Qualtrics ultimately remains a "point and click" software.
 
