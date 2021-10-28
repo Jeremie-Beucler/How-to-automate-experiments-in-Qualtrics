@@ -253,7 +253,7 @@ If you realize that you have some modifications to make to your trial configurat
 
 ## Final note
 
-I hope you enjoyed reading this page, and that it will make you gain some time if you have to use Qualtrics to build experiments !
+I hope you enjoyed reading this page, and that it will make you gain some time if you have to use Qualtrics to build experiments!
 
 If you have any questions, don't hesitate to contact me: &nbsp; <jeremie.beucler@gmail.com>
     
