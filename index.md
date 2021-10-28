@@ -127,7 +127,7 @@ Then, export your survey as a `.qsf` file: [How to export a Survey as a QSF](htt
 
 ## <a name="4"></a>Step 4: Open this file with Python, copy the configuration of the manually customized item onto the other items and import the new `.qsf` file on Qualtrics
 
-### Understand the structure of the `.qsf` file
+### The `.qsf` file structure
 
 For this last stage, it is crucial that you understand what a `.qsf` file is and how it is organized.[^3]
 
