@@ -3,11 +3,11 @@
 
 This page explains how to partially automate experiments generation on Qualtrics using `Python`.[^1] However, it does not deal with modifications of the Survey flow, which we recommend to manually edit.
 
-[^1]: Note that you may use `R` or a similar programming language instead of `Python` to achieve the same goal. You only have to adapt the code and the libraries to the language of your choice.
+[^1]: Note that you may use `R` or a similar programming language instead of `Python`. You only have to adapt the code and the libraries to the language of your choice.
 
 <ins>Programming prerequisites:</ins> loops, read & write in a `.txt` or `.csv` file, regular expressions.
 
-*This page builds upon the work of Matthieu Raoelison.*
+*This page builds upon the work & ideas of Matthieu Raoelison.*
 
 ## Introduction
 
