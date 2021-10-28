@@ -11,7 +11,7 @@ This page explains how to partially automate experiments generation on Qualtrics
 
 ## Introduction
 
-Qualtrics is an online software to generate surveys that may be used to design psychology experiments, for several reasons. First, your university probably has a Qualtrics subscription. Qualtrics is also [very compatible](https://researcher-help.prolific.co/hc/en-gb/articles/360009224113-Qualtrics-Integration-Guide#heading-1) with the participants recruitment platform [Prolific](https://www.prolific.com/). Thanks to its easy-to-use graphical interface, no programming experience is required to build an experiment on Qualtrics.
+Qualtrics is an online software to generate surveys that may be used to design psychology experiments, for several reasons. First, your university probably has a Qualtrics subscription. Qualtrics is also [very compatible](https://researcher-help.prolific.co/hc/en-gb/articles/360009224113-Qualtrics-Integration-Guide#heading-1) with the participants recruitment platform [Prolific](https://www.prolific.com/). Also, thanks to its easy-to-use graphical interface, no programming experience is required to build an experiment on Qualtrics.
 
 However, designing experiments with Qualtrics can be challenging! While it is possible to use [Javascript code](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/add-javascript/) in your questions and add some logic or randomization to your experiment using the [Survey flow](https://www.qualtrics.com/support/survey-platform/survey-module/survey-flow/survey-flow-overview/), Qualtrics ultimately remains a "point and click" software.
 
@@ -255,7 +255,7 @@ If you realize that you have some modifications to make to your trial configurat
 
 I hope you enjoyed reading this page, and that it will make you gain some time if you have to use Qualtrics to build experiments !
 
-If you have any questions, you can contact me: &nbsp; <jeremie.beucler@gmail.com>
+If you have any questions, don't hesitate to contact me: &nbsp; <jeremie.beucler@gmail.com>
     
 <br>
 
