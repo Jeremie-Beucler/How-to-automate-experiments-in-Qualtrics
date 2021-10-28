@@ -15,7 +15,9 @@ Qualtrics is an online software to generate surveys that may be used to design p
 
 However, designing experiments with Qualtrics can be challenging! While it is possible to use [Javascript code](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/add-javascript/) in your questions and add some logic or randomization to your experiment using the [Survey flow](https://www.qualtrics.com/support/survey-platform/survey-module/survey-flow/survey-flow-overview/), Qualtrics ultimately remains a "point and click" software.
 
-Suppose you want to generate a psychology experiment in Qualtrics. You may want to display a fixation cross for a given time, show a stimulus  and then record participants answers. In Qualtrics, generating this trial once is quite easy. However, your experiment may contain different conditions, each one containing several trials... If you try to implement this manually on Qualtrics, it will take a lot of time and may lead to errors! Even worse, suppose you painfully managed to build your experiment, and then realize you wanted the fixation cross to be displayed only for one second instead of two. You now have to manually modify each trial individually! This motivates our guide to automate the generation of Qualtrics experiments. 
+Suppose you want to generate a psychology experiment in Qualtrics. You may want to display a fixation cross for a given time, show a stimulus  and then record participants answers. In Qualtrics, generating this trial once is quite easy. However, your experiment may contain different conditions, each one containing several trials... If you try to implement this manually on Qualtrics, it will take a lot of time and may lead to errors! Even worse, suppose you painfully managed to build your experiment and then realize you wanted the fixation cross to be displayed only for one second instead of two. You now have to manually modify each trial individually! This motivates our guide to automate the generation of Qualtrics experiments. 
+
+Do not hesitate to create a `GitHub Issue` if you see anything that could be improved :)
 
 ## General overview
 
